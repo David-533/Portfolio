@@ -10,6 +10,7 @@ import Veille from '../Views/Veille.vue'
 import Contact from '../Views/Contact.vue'
 
 const routes = [
+  { path: '/', redirect: '/accueil' }, // ✅ route par défaut
   { path: '/accueil', component: Accueil },
   { path: '/apropos', component: APropos },
   { path: '/projets', component: Projets },
