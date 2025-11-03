@@ -1,6 +1,6 @@
 <template>
-  <!-- Formulaire HTML -->
   <section class="section-contact" id="contact">
+    <!-- Formulaire -->
     <form id="contact-form" @submit.prevent="sendEmail" novalidate>
       <h2>Contactez-moi</h2>
 
@@ -21,8 +21,16 @@
 
       <button type="submit">Envoyer</button>
     </form>
+
+    <!-- Cadre infos contact -->
+    <div class="contact-info">
+      <p><strong> 📧 EMAIL</strong><br>gaetanandre.ramin@gmail.com</p>
+      <p><strong>📞 TELEPHONE</strong><br>+33 7 67 30 21 95</p>
+      <p><strong> 📍 LOCALISATION</strong><br>91510 Lardy, France</p>
+    </div>
   </section>
 </template>
+
 
 <script setup>
 import emailjs from '@emailjs/browser'
@@ -63,45 +71,50 @@ const sendEmail = () => {
 .section-contact {
   position: relative;
   z-index: 1;
-  padding: 100px 0;
+  height: 100vh; /* ✅ pas plus grand que l'écran */
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 0; /* ✅ on retire le gros padding */
+  padding-left: 20vw; /* Décalage vers la droite */
+  overflow: hidden; /* ✅ enlève tout scroll */
+  gap: 110px; /* ✅ espace entre le formulaire et le cadre */
+
+  /* 🌌 Fond néon */
+  background:
+    radial-gradient(circle at 30% 30%, #00ffff22, transparent 40%),
+    radial-gradient(circle at 70% 70%, #ff00ff22, transparent 40%),
+    #000;
+  background-size: cover;
+  animation: neonWave 12s ease-in-out infinite alternate;
 }
 
-.section-contact::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(270deg, #00ffff, #ff00ff, #00ffff);
-  background-size: 600% 600%;
-  animation: animFond 10s ease infinite;
-  z-index: 0;
-  opacity: 0.08; /* légère transparence */
+@keyframes neonWave {
+  0% {
+    background-position: 30% 30%, 70% 70%;
+  }
+  100% {
+    background-position: 35% 25%, 65% 75%;
+  }
 }
 
 .section-contact form {
   background: #111;
-  padding: 30px 40px;
+  padding: 80px 60px; /* ✅ plus de hauteur */
   border-radius: 10px;
   box-shadow: 0 0 20px #00ffffaa;
   width: 360px;
-  margin: 0 auto;
   animation: formFadeIn 1.2s ease-out both;
   position: relative;
   z-index: 1;
-  margin-right: 23%;
+  margin: 0;
 }
+
 
 /* Animation d'apparition */
 @keyframes formFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .section-contact form h2 {
@@ -114,12 +127,8 @@ const sendEmail = () => {
 }
 
 @keyframes pulseGlow {
-  from {
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffffaa;
-  }
-  to {
-    text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffffaa;
-  }
+  from { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffffaa; }
+  to { text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffffaa; }
 }
 
 .section-contact .form-group {
@@ -184,6 +193,7 @@ const sendEmail = () => {
   transition: 0.3s ease all;
   text-shadow: 0 0 10px #00ffff;
   animation: glowButton 2s ease-in-out infinite alternate;
+  
 }
 
 .section-contact button:hover {
@@ -194,12 +204,31 @@ const sendEmail = () => {
 }
 
 @keyframes glowButton {
-  0% {
-    box-shadow: 0 0 5px #00ffff;
-  }
-  100% {
-    box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffffaa;
-  }
+  0% { box-shadow: 0 0 5px #00ffff; }
+  100% { box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffffaa; }
 }
+.contact-info {
+  background: #111;
+  padding: 80px 60px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffffaa;
+  width: 360px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px; /* ✅ texte général plus grand */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: formFadeIn 1.2s ease-out both;
+}
+
+/* Titre avec glow comme h2 du formulaire */
+.contact-info h3 {
+  font-family: 'Roboto', sans-serif; /* on met Roboto aussi */
+  font-size: 28px; /* ✅ titre plus grand */
+  text-align: center;
+  margin-bottom: 20px;
+  animation: pulseGlow 2s infinite alternate;
+}
+
 
 </style>
