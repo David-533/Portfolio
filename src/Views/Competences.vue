@@ -2,17 +2,10 @@
   <div class="section" id="mescompetence">
     <h2>Mes Compétences</h2>
 
-    <div class="skills-carousel">
-      <div class="skills-track">
-        <div class="skill-card" v-for="(skill, index) in skills" :key="index">
-          <img :src="skill.icon" :alt="skill.name">
-          <p>{{ skill.name }}</p>
-        </div>
-        <!-- On répète les mêmes cartes pour une boucle infinie -->
-        <div class="skill-card" v-for="(skill, index) in skills" :key="'dup-'+index">
-          <img :src="skill.icon" :alt="skill.name">
-          <p>{{ skill.name }}</p>
-        </div>
+    <div class="skills-grid">
+      <div class="skill-card" v-for="(skill, index) in skills" :key="index">
+        <img :src="skill.icon" :alt="skill.name">
+        <p>{{ skill.name }}</p>
       </div>
     </div>
   </div>
@@ -47,67 +40,92 @@ export default {
 
 <style scoped>
 .section {
-  padding: 110px 30px 30px;
+  padding-top: 180px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 50px;
   text-align: center;
   color: #fff;
-  background: #111;
+  background: #000; /* noir pur */
+  scroll-margin-top: 180px;
 }
 
 h2 {
   color: #00ffff;
   text-shadow: 0 0 10px #00ffffaa;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Carrousel */
-.skills-carousel {
-  overflow: hidden;
-  width: 100%;
+/* === Grille responsive === */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.skills-track {
-  display: flex;
-  gap: 20px;
-  animation: scrollSkills 20s linear infinite;
-}
-
+/* === Carte === */
 .skill-card {
-  background: #1a1a1a;
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
+  background: #000; /* fond noir, sans transparence */
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px #00ffff55;
-  flex-shrink: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #222; /* contour discret gris foncé */
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .skill-card img {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   object-fit: contain;
 }
 
 .skill-card p {
-  margin-top: 10px;
+  margin-top: 8px;
   color: #fff;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 13px;
 }
 
+/* Effet hover subtil */
 .skill-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #00ffff, 0 0 40px #ff00c8;
+  transform: scale(1.08);
+  border-color: #00ffff;
 }
 
-/* Animation du défilement */
-@keyframes scrollSkills {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* === Responsive === */
+
+/* Tablettes : 3 colonnes */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobiles : 2 colonnes */
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .skill-card {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-card img {
+    width: 45px;
+    height: 45px;
+  }
 }
 </style>
 
