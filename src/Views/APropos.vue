@@ -6,7 +6,7 @@
     <div class="card intro-card">
       <p>Bonjour, Je m'appelle David.</p>
       <p>
-        Je suis actuellement étudiant au lycée Saint Hilaire en première année de BTS SIO
+        Je suis actuellement étudiant au lycée Saint Hilaire en deuxième année de BTS SIO
         (Services Informatiques aux Organisations) dans l'option SLAM
         (Solutions Logicielles et Application Métier).
       </p>
