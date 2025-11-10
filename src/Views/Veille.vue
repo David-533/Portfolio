@@ -38,15 +38,15 @@
       <p><a href="https://www.frandroid.com/marques/tesla/2541525_la-future-voiture-electrique-abordable-de-tesla-serait-decevante-voici-les-premiers-details" target="_blank">Cliquez ici pour lire l'article</a></p>
     </div>
 
-    <div class="article-carte">
-      <img src="https://img.static-rmg.be/a/view/q75/w1600/h836/f50.00,50.00/7195806/gettyimages-1398279227-jpg.jpg" alt="Uber">
-      <p><strong>Article :</strong> Uber entend proposer en 2026 des voitures autonomes en Europe.</p>
-      <p><strong>Publié le :</strong> 5 mai 2025</p>
-      <p><strong>Source :</strong> datanews.levif.be</p>
-      <p><strong>Résumé :</strong> Uber prévoit de lancer des taxis autonomes en Europe dès 2026, en partenariat avec la société chinoise Momenta. Ce projet marque une étape majeure dans l'expansion mondiale des véhicules autonomes.</p>
-      <p><a href="https://datanews.levif.be/actualite/innovation/mobilite/uber-entend-proposer-en-2026-des-voitures-autonomes-en-europe/" target="_blank">Cliquez ici pour lire l'article</a></p>
-    </div>
-  </div>
+<div class="article-carte">
+  <img src="https://rouleur-electrique.fr/wp-content/uploads/2025/10/La-conduite-autonome-Tesla-FSD-v14-decoit-les-premieres-a.jpg" alt="Tesla FSD v14 – conduite autonome décevante">
+  <p><strong>Article :</strong> La conduite autonome Tesla FSD v14 déçoit les premières attentes</p>
+  <p><strong>Publié le :</strong> 17 octobre 2025</p>
+  <p><strong>Source :</strong> rouleur-electrique.fr</p>
+  <p><strong>Résumé :</strong> La mise à jour FSD v14 de Tesla apporte des progrès dans l’autonomie, mais reste loin des promesses initiales : les conducteurs rapportent encore des interventions fréquentes et des limites matérielles émergent.</p>
+  <p><a href="https://rouleur-electrique.fr/la-conduite-autonome-tesla-fsd-v14-decoit-les-premieres-attentes/" target="_blank">Cliquez ici pour lire l’article</a></p>
+</div>
+</div>
 </template>
 
 <script>
