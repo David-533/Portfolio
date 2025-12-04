@@ -2,159 +2,124 @@
   <div class="section" id="projets">
     <h2>Projets</h2>
     <div class="parcours-container">
+   <!-- Carte 1 : Société Unic -->
+<div class="parcours-carte">
+  <h3>Société Unic</h3>
+
+  <!-- Image du projet -->
+  <img 
+    src="https://www.ebp.com/wp-content/uploads/2024/03/banniere-blog-cybersecurite-bu-0324.webp" 
+    alt="Projet Société Unic" 
+    class="carte-image"
+  >
+
+  <a 
+    href="https://docs.google.com/document/d/1rIRTp4-hhE1YO84PA9y5QOIGN84jmwA1RisCV7FLyZs/edit?tab=t.0" 
+    target="_blank" 
+    class="date-bulle"
+  >
+    Voir le projet
+  </a>
+</div>
+
+
+      <!-- Carte 2 -->
       <div class="parcours-carte">
-        <h3>Java</h3>
-        <a href="https://docs.google.com/document/d/1aNsgu_0fkoKeeuCAFPIAVcvy-yUxn6NHOTj4kKM45Xk/edit?usp=drive_link" target="_blank" class="image-lien">
-          <img :src="java" width="100%" height="500px" class="image-projet">
-        </a>
+        <h3>Projet</h3>
+        <a href="https://exemple.com" target="_blank" class="date-bulle">Voir le projet</a>
+      </div>
+
+      <!-- Carte 3 -->
+      <div class="parcours-carte carte-bas">
+        <h3>Projet</h3>
+        <a href="https://exemple.com" target="_blank" class="date-bulle">Voir le projet</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import JavaImage from '../assets/Java.jpg';
-
 export default {
   name: "Projets",
-  data() {
-    return {
-      javaImage: JavaImage
-    };
-  },
 };
 </script>
 
-
 <style scoped>
-
-.image-lien {
-  display: block;
-  overflow: hidden;
-  position: relative;
-}
-
-.image-projet {
-  transition: filter 0.3s ease;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.image-lien:hover .image-projet {
-  filter: blur(3px);
-  cursor: pointer;
-}
-
 .parcours-container {
   display: flex;
+  flex-direction: column; /* empile les cartes verticalement */
+  align-items: center;    /* centre les cartes horizontalement */
   justify-content: center;
+  gap: 40px;              /* espace plus large entre les cartes */
+  padding: 60px 0;
+  flex-direction: row;
   flex-wrap: wrap;
-  padding: 20px;
+  font-family: Roboto, sans-serif;
+  margin-left: 220px;
 }
 
+/* ====== Cartes ====== */
 .parcours-carte {
-  width: 100%; /* ou 100% si tu veux qu'il prenne toute la largeur disponible */
-  max-width: 800px;
+  width: 400px;           /* largeur augmentée */
+  height: 320px;          /* hauteur augmentée */
   background-color: #1a1a1a;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #00ffff55;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #00ffff55;
-  transition: transform 0.3s ease;
-  text-align: center;
-}
-
-.parcours-carte:hover {
-  transform: scale(1.03);
-}
-
-.parcours-carte img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.bulle-date {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 6px 14px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 20px;
-  color: white;
-  background: linear-gradient(270deg, #00ffff, #ff00c8);
-  background-size: 800% 800%;
-  animation: bulleColorAnim 5s ease infinite;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
-}
-
-@keyframes bulleColorAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Pour tous les titres h1 à h6 */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #ffffff;
-}
-
-/* Pour les paragraphes */
-p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #dddddd;
-}
-
-.parcours-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.parcours-carte {
-  position: relative;
-  width: 300px;
-  min-height: 250px;
-  background-color: #1a1a1a;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #00ffff55;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease;
+  align-items: center;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.parcours-carte:hover {
-  transform: scale(1.03);
+/* ====== Image ====== */
+.carte-image-container {
+  width: 100%;
+  height: 180px; /* plus grande pour remplir la carte */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px #00ffff33;
+  margin-bottom: 15px;
+}
+
+.carte-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.parcours-carte:hover .carte-image {
+  transform: scale(1.05);
+}
+
+/* ====== Texte et bouton ====== */
+h3 {
+  color: #ffffff;
+  font-size: 1.4rem; /* texte plus grand */
+  margin-bottom: 15px;
 }
 
 .date-bulle {
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
   color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 14px;
-  margin: 10px auto;
-  animation: bulleAnim 4s infinite linear;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 12px #00ffff55;
+  transition: all 0.3s ease;
+  margin-top: 51px;
+  gap: 60;
 }
 
-@keyframes bulleAnim {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
+.date-bulle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #00ffffaa;
 }
 
 </style>
