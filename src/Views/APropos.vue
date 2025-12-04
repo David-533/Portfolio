@@ -45,7 +45,7 @@
 
     <!-- Bouton CV -->
     <div class="centre-page">
-      <a href="CV David Ramin.jpg" target="_blank" class="btn-rapport">Mon CV</a>
+      <a href="'assets/CV David Ramin_Oct 2025.pdf" target="_blank" class="btn-rapport">Mon CV</a>
     </div>
   </div>
 </template>
