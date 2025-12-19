@@ -54,7 +54,7 @@
         >
 
         <a 
-          href="https://hilarious-chaja-2dcbdb.netlify.app" 
+          href="https://legendary-zuccutto-faa6a0.netlify.app" 
           target="_blank" 
           class="date-bulle"
         >
