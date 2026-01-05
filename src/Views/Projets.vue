@@ -61,6 +61,42 @@
           Voir le projet
         </a>
       </div>
+      <!-- Carte 4 : Burpsuite -->
+      <div class="parcours-carte">
+        <h3>BurpSuite</h3>
+
+        <img 
+          src="https://netforemost.com/wp-content/uploads/2024/09/1705584317236.webp" 
+          alt="Burpsuite" 
+          class="carte-image"
+        >
+
+        <a 
+          href="https://docs.google.com/document/d/1KG--GrI2fKsoOHa-S8FOoJedPK-2sXIpc5tnXkrHTc8/edit?tab=t.0" 
+          target="_blank" 
+          class="date-bulle"
+        >
+          Voir le projet
+        </a>
+      </div>
+      <!-- Carte 5 : Ma banque -->
+      <div class="parcours-carte">
+        <h3>Identité numérique</h3>
+
+        <img 
+          src="https://semji.com/wp-content/uploads/2020/07/Protection-identit%C3%A9-num%C3%A9rique.png" 
+          alt="Ma banque" 
+          class="carte-image"
+        >
+
+        <a 
+          href="https://docs.google.com/document/d/1hF0lc3QFmj0v5-1YAJWAS9JlC67tcnITHxxkOz7mKWc/edit?tab=t.0" 
+          target="_blank" 
+          class="date-bulle"
+        >
+          Voir le projet
+        </a>
+      </div>
 
     </div>
   </div>
@@ -164,3 +200,6 @@ h2 {
 
 
 </style>
+
+
+
