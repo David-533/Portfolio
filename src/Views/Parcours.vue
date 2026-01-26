@@ -38,8 +38,8 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
-          <h3>Stage 2</h3>
-          <div class="bulle-date">Mars 2024</div>
+          <h3>MF2i</h3>
+          <div class="bulle-date">12 Janvier - 20 Février 2026</div>
           <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Note de Synthèse</a>
         </div>
       </div>
