@@ -26,7 +26,7 @@
           <!-- Contenu SLAM -->
         </slot>
       </div>
-      <span class="slam-note">← Mon option favorite</span>
+      <span class="slam-note">← La filière que j'ai choisie</span>
     </div>
   </div>
 </template>
