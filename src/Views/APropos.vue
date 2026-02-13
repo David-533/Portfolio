@@ -1,159 +1,165 @@
 <template>
-  <div class="apropos-container" id="apropos">
-    <h2 class="neon-title">A Propos</h2>
+  <div class="apropos-container">
+    <!-- Utilise les classes neon avec variante via attribut data-variant -->
+    <h2 class="neon-text" data-variant="primary">À Propos</h2>
 
-    <!-- Bloc présentation -->
-    <div class="card intro-card">
-      <p>Bonjour, Je m'appelle David.</p>
-      <p>
-        Je suis actuellement étudiant au lycée Saint Hilaire en deuxième année de BTS SIO
-        (Services Informatiques aux Organisations) dans l'option SLAM
-        (Solutions Logicielles et Application Métier).
-      </p>
-      <p>
-        Le Brevet de Technicien Supérieur aux Services Informatiques aux Organisations (BTS SIO)
-        est un diplôme de 2 ans qui s'adresse à tous ceux qui veulent se spécifier dans le domaine
-        et enrichir ces compétences informatiques en réseau ou en développement.
-      </p>
-      <p>Le BTS SIO comporte deux catégories :</p>
+    <!-- Carte Introduction -->
+    <div class="card card--intro">
+      <slot name="intro">
+        <!-- Contenu intro -->
+      </slot>
     </div>
 
-    <!-- Bloc SISR -->
-    <div class="card sisr-card">
-      <h3 class="neon-sisr">Option SISR</h3>
-      <p>
-        L’option Solution d’infrastructure, systèmes et réseaux forme des professionnels des réseaux
-        et équipements informatiques (installation, maintenance, sécurité). Elle permet de former des
-        professionnels capables de concevoir, administrer et sécuriser des réseaux informatiques,
-        ainsi que de gérer les serveurs et postes clients.
-      </p>
+    <!-- Carte SISR -->
+    <h3 class="neon-text" data-variant="sisr">SISR</h3>
+    <div class="card card--sisr">
+      <slot name="sisr">
+        <!-- Contenu SISR -->
+      </slot>
     </div>
 
-    <!-- Bloc SLAM avec texte externe -->
+    <!-- Carte SLAM avec note -->
+    <h3 class="neon-text" data-variant="slam">SLAM</h3>
     <div class="slam-wrapper">
-      <div class="card slam-card">
-        <h3 class="neon-slam">Option SLAM</h3>
-        <p>
-          L’option Solutions logicielles et applications métiers forme des spécialistes des logiciels
-          (rédaction d’un cahier des charges, formulation des besoins et spécifications, développement,
-          intégration au sein de la société). Elle permet de former des spécialistes capables de
-          concevoir, développer et maintenir des logiciels et applications adaptés aux besoins des entreprises.
-        </p>
+      <div class="card card--slam">
+        <slot name="slam">
+          <!-- Contenu SLAM -->
+        </slot>
       </div>
-      <span class="slam-note">👈 (la filière que j’ai choisie)</span>
+      <span class="slam-note">← Mon option favorite</span>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "APropos",
-};
-</script>
-
 <style scoped>
+/* ============================================
+   CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+  --sidebar-width: 240px;
+  --card-max-width: 800px;
+  --card-bg: rgba(20, 20, 20, 0.85);
+  --card-radius: 12px;
+  --card-padding: 25px 35px;
+
+  /* Couleurs des variantes */
+  --color-primary: #ff0000;
+  --color-primary-light: #ff4d4d;
+  --color-sisr: #ff00cc;
+  --color-sisr-light: #ff66d9;
+  --color-slam: #00ff00;
+  --color-slam-light: #66ff66;
+
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
 .apropos-container {
-  margin-left: 240px;
+  margin-left: var(--sidebar-width);
   padding: 40px;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   color: #ffffff;
 }
 
-/* --- TITRES AVEC EFFET NÉON ANIMÉ --- */
-.neon-title {
-  background: linear-gradient(270deg, #ff0000, #ffffff, #ff4d4d, #ffffff);
+/* ============================================
+   NEON TEXT — Classe unique + variantes via data-variant
+   Supprime la duplication des 3 anciennes classes
+   ============================================ */
+.neon-text {
+  --neon-color: var(--color-primary);
+  --neon-color-light: var(--color-primary-light);
+
+  background: linear-gradient(
+    270deg,
+    var(--neon-color),
+    #ffffff,
+    var(--neon-color-light),
+    #ffffff
+  );
   background-size: 600%;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback standard */
   animation: neonFlow 6s linear infinite;
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
   font-weight: bold;
+  will-change: background-position;
 }
 
-.neon-sisr {
-  background: linear-gradient(270deg, #ff00cc, #ffffff, #ff66d9, #ffffff);
-  background-size: 600%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: neonFlow 6s linear infinite;
-  text-shadow: 0 0 10px rgba(255, 0, 204, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
-  font-weight: bold;
+/* Variantes — on ne change QUE les couleurs */
+.neon-text[data-variant="sisr"] {
+  --neon-color: var(--color-sisr);
+  --neon-color-light: var(--color-sisr-light);
 }
 
-.neon-slam {
-  background: linear-gradient(270deg, #00ff00, #ffffff, #66ff66, #ffffff);
-  background-size: 600%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: neonFlow 6s linear infinite;
-  text-shadow: 0 0 10px rgba(0, 255, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
-  font-weight: bold;
+.neon-text[data-variant="slam"] {
+  --neon-color: var(--color-slam);
+  --neon-color-light: var(--color-slam-light);
 }
 
-/* --- Animation du dégradé qui défile --- */
+h2.neon-text {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* ============================================
+   ANIMATION
+   ============================================ */
 @keyframes neonFlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-h2.neon-title {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-/* --- STYLE DES BLOCS --- */
+/* ============================================
+   CARDS — Base + variantes
+   ============================================ */
 .card {
+  --card-color: var(--color-primary);
+
   position: relative;
-  max-width: 800px;
+  max-width: var(--card-max-width);
   margin: 25px auto;
-  padding: 25px 35px;
-  border-radius: 12px;
-  background: rgba(20, 20, 20, 0.85);
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
   text-align: left;
   line-height: 1.6;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--card-color);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--card-color) 20%, transparent);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-medium);
 }
 
-/* Halo externe subtil */
+/* Halo interne subtil */
 .card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: var(--card-radius);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--card-color) 27%, transparent), transparent);
   padding: 2px;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
 
-/* Variantes colorées */
-.intro-card {
-  border: 1px solid #ff0000;
-  box-shadow: 0 0 20px #ff000033;
-}
-.intro-card::before {
-  background: linear-gradient(145deg, #ff000044, transparent);
+/* Variantes — uniquement la couleur */
+.card--sisr {
+  --card-color: var(--color-sisr);
 }
 
-.sisr-card {
-  border: 1px solid #ff00cc;
-  box-shadow: 0 0 20px #ff00cc33;
-}
-.sisr-card::before {
-  background: linear-gradient(145deg, #ff00cc44, transparent);
-}
-
-.slam-card {
-  border: 1px solid #00ff00;
-  box-shadow: 0 0 20px #00ff0033;
-}
-.slam-card::before {
-  background: linear-gradient(145deg, #00ff0044, transparent);
+.card--slam {
+  --card-color: var(--color-slam);
 }
 
 .card:hover {
@@ -161,7 +167,9 @@ h2.neon-title {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
 }
 
-/* --- Texte externe à droite du bloc SLAM --- */
+/* ============================================
+   SLAM NOTE (texte flottant)
+   ============================================ */
 .slam-wrapper {
   position: relative;
   display: flex;
@@ -171,38 +179,37 @@ h2.neon-title {
 
 .slam-note {
   position: absolute;
-  right: 90px;
+  right: clamp(20px, 5vw, 90px); /* Responsive au lieu de valeur fixe */
   font-family: 'Roboto', sans-serif;
-  color: #ffffffcc;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
   white-space: nowrap;
-  text-shadow: 0 0 6px #00ff00;
   font-style: italic;
-  animation: slide-wiggle 2s ease-in-out infinite, glow-pulse 3s ease-in-out infinite;
+  will-change: transform, text-shadow;
+  animation:
+    slide-wiggle 2s ease-in-out infinite,
+    glow-pulse 3s ease-in-out infinite;
 }
 
-/* 🔁 Animation du petit mouvement gauche-droite */
 @keyframes slide-wiggle {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(-6px); }
 }
 
-/* ✨ Animation de lumière subtile */
 @keyframes glow-pulse {
   0%, 100% {
-    text-shadow: 0 0 6px #00ff00, 0 0 10px #00ff0066;
+    text-shadow: 0 0 6px var(--color-slam), 0 0 10px rgba(0, 255, 0, 0.4);
     opacity: 1;
   }
   50% {
-    text-shadow: 0 0 10px #00ffee, 0 0 20px #00ffee88;
+    text-shadow: 0 0 10px #00ffee, 0 0 20px rgba(0, 255, 238, 0.53);
     opacity: 0.9;
   }
 }
 
-
-
-
-/* Responsive */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 1024px) {
   .slam-note {
     position: static;
@@ -217,8 +224,21 @@ h2.neon-title {
     margin-left: 0;
     padding: 20px;
   }
+
   .card {
     padding: 15px 20px;
+  }
+}
+
+/* Accessibilité : désactive les animations si l'utilisateur le demande */
+@media (prefers-reduced-motion: reduce) {
+  .neon-text,
+  .slam-note {
+    animation: none;
+  }
+
+  .card {
+    transition: none;
   }
 }
 </style>
