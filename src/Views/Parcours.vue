@@ -113,14 +113,14 @@ export default {
       ],
       notesSynthese: [
         {
-          titre: "Note de Synthèse – MF2i",
-          stage: "Stage 2ème année • 2026",
-          url: "https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0",
-        },
-        {
           titre: "Note de Synthèse – SNCF",
           stage: "Stage 1ère année • 2025",
           url: "https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link",
+        },
+        {
+          titre: "Note de Synthèse – MF2i",
+          stage: "Stage 2ème année • 2026",
+          url: "https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0",
         },
       ],
     };
