@@ -7,18 +7,17 @@
         class="skill-card"
         v-for="(skill, index) in skills"
         :key="skill.name"
-        :style="{ animationDelay: `${index * 0.1}s` }"
+        :style="{ animationDelay: `${index * 0.08}s` }"
       >
         <img
           :src="skill.icon"
           :alt="`Logo ${skill.name}`"
           loading="lazy"
-          width="55"
-          height="55"
+          width="38"
+          height="38"
         />
         <p>{{ skill.name }}</p>
 
-        <!-- Tooltip au survol -->
         <span class="skill-tooltip">{{ skill.description }}</span>
       </div>
     </div>
@@ -40,7 +39,7 @@ export default {
         { name: "Python", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png", description: "Scripts, automatisation et back-end" },
         { name: "VS Code", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/768px-Visual_Studio_Code_1.35_icon.svg.png", description: "Éditeur principal avec extensions et debugging" },
         { name: "Linux", icon: "https://www.freepnglogos.com/uploads/linux-png/file-icons-flat-linux-svg-wikimedia-commons-6.png", description: "Administration système et ligne de commande" },
-        { name: "Tailwind CSS", icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", description: "Framework CSS utility-first" },
+        { name: "Tailwind", icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", description: "Framework CSS utility-first" },
         { name: "Vue", icon: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg", description: "Framework JS progressif pour interfaces web" },
         { name: "GitLab", icon: "https://avatars.slack-edge.com/2020-11-25/1527503386626_319578f21381f9641cd8_512.png", description: "CI/CD, gestion de repos et collaboration" },
         { name: "Netlify", icon: "https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg", description: "Déploiement et hébergement de sites statiques" },
@@ -58,20 +57,22 @@ export default {
    ============================================ */
 :root {
   --accent-cyan: #00ffff;
-  --accent-cyan-dim: rgba(0, 255, 255, 0.3);
-  --card-size: 110px;
-  --card-size-mobile: 100px;
-  --icon-size: 55px;
-  --icon-size-mobile: 45px;
-  --card-radius: 15px;
-  --tooltip-max-width: 220px;
+  --accent-cyan-dim: rgba(0, 255, 255, 0.25);
+  --card-size: 100px;
+  --card-size-tablet: 95px;
+  --card-size-mobile: 90px;
+  --icon-size: 38px;
+  --icon-size-tablet: 34px;
+  --icon-size-mobile: 32px;
+  --card-radius: 14px;
+  --tooltip-max-width: 190px;
 }
 
 /* ============================================
    SECTION
    ============================================ */
 .section {
-  padding: 180px 80px 60px 120px;
+  padding: 180px 40px 60px;
   text-align: center;
   color: #fff;
   background: #000;
@@ -83,7 +84,7 @@ h2 {
   color: var(--accent-cyan);
   text-shadow: 0 0 15px rgba(0, 255, 255, 0.67);
   margin-bottom: 40px;
-  font-size: 30px;
+  font-size: 28px;
   letter-spacing: 1px;
   animation: fadeInDown 1s ease;
 }
@@ -94,12 +95,11 @@ h2 {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 25px;
+  gap: 18px;
   justify-items: center;
   align-items: center;
-  max-width: 1100px;
+  max-width: 650px;
   margin: 0 auto;
-  /* Empêche les tooltips de créer un scroll horizontal */
   overflow: visible;
 }
 
@@ -110,7 +110,7 @@ h2 {
   position: relative;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--accent-cyan-dim);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.08);
   width: var(--card-size);
   height: var(--card-size);
   border-radius: var(--card-radius);
@@ -118,36 +118,35 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   cursor: pointer;
   transition:
-    transform 0.4s ease,
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 
-  /* Animation d'entrée */
   opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .skill-card:hover {
-  transform: translateY(-8px) scale(1.08);
+  transform: translateY(-6px) scale(1.06);
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.47);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
 .skill-card img {
   width: var(--icon-size);
   height: var(--icon-size);
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.27));
+  filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.2));
 }
 
 .skill-card p {
-  margin-top: 8px;
   font-weight: 600;
-  font-size: 12px;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.33);
-  /* Protection contre le débordement du nom */
+  font-size: 11px;
+  color: #ccc;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.25);
   max-width: calc(var(--card-size) - 16px);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -160,59 +159,48 @@ h2 {
    ============================================ */
 .skill-tooltip {
   position: absolute;
-  bottom: calc(100% + 12px);
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   background: rgba(0, 0, 0, 0.92);
   border: 1px solid var(--accent-cyan);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 7px 11px;
+  border-radius: 7px;
   pointer-events: none;
   z-index: 10;
-
-  /* Retour à la ligne propre au lieu de nowrap */
   white-space: normal;
   max-width: var(--tooltip-max-width);
   width: max-content;
   text-align: center;
-
-  /* Caché par défaut */
   opacity: 0;
   visibility: hidden;
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    visibility 0.3s ease;
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
 }
 
-/* Flèche vers le bas */
 .skill-tooltip::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid transparent;
+  border: 5px solid transparent;
   border-top-color: var(--accent-cyan);
 }
 
-/* Affichage au hover */
 .skill-card:hover .skill-tooltip {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
 
-/*
- * FIX : Colonnes gauche/droite
- * Décale le tooltip pour qu'il ne déborde pas du viewport
- */
-
-/* 1ère colonne (gauche) — décale vers la droite */
+/* 1ère colonne — décale vers la droite */
 .skill-card:nth-child(5n + 1) .skill-tooltip {
   left: 0;
   transform: translateX(0) translateY(6px);
@@ -221,10 +209,10 @@ h2 {
   transform: translateX(0) translateY(0);
 }
 .skill-card:nth-child(5n + 1) .skill-tooltip::after {
-  left: 24px;
+  left: 20px;
 }
 
-/* 5ème colonne (droite) — décale vers la gauche */
+/* 5ème colonne — décale vers la gauche */
 .skill-card:nth-child(5n) .skill-tooltip {
   left: auto;
   right: 0;
@@ -235,49 +223,42 @@ h2 {
 }
 .skill-card:nth-child(5n) .skill-tooltip::after {
   left: auto;
-  right: 24px;
+  right: 20px;
 }
 
 /* ============================================
    ANIMATIONS
    ============================================ */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
-  .section {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
+    max-width: 380px;
   }
 
-  /* Sur 3 colonnes : ajuster les bords gauche/droite */
-  /* Reset du layout 5 colonnes */
+  .skill-card {
+    width: var(--card-size-tablet);
+    height: var(--card-size-tablet);
+  }
+
+  .skill-card img {
+    width: var(--icon-size-tablet);
+    height: var(--icon-size-tablet);
+  }
+
+  /* Reset layout 5 colonnes */
   .skill-card:nth-child(5n + 1) .skill-tooltip,
   .skill-card:nth-child(5n) .skill-tooltip {
     left: 50%;
@@ -303,7 +284,7 @@ h2 {
     transform: translateX(0) translateY(0);
   }
   .skill-card:nth-child(3n + 1) .skill-tooltip::after {
-    left: 24px;
+    left: 20px;
   }
 
   /* 3ème colonne sur 3 */
@@ -317,13 +298,13 @@ h2 {
   }
   .skill-card:nth-child(3n) .skill-tooltip::after {
     left: auto;
-    right: 24px;
+    right: 20px;
   }
 
   /* Tooltip en dessous sur tablette */
   .skill-tooltip {
     bottom: auto;
-    top: calc(100% + 12px);
+    top: calc(100% + 10px);
   }
   .skill-tooltip::after {
     top: auto;
@@ -341,7 +322,8 @@ h2 {
 
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    max-width: 260px;
+    gap: 16px;
   }
 
   .skill-card {
