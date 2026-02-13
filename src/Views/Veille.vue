@@ -229,13 +229,11 @@ h2 {
   opacity: 0;
   animation: fadeInUp 0.6s ease forwards;
   transition:
-    transform 0.3s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
 }
 
 .article-card:hover {
-  transform: translateY(-6px) scale(1.01);
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
   border-color: rgba(0, 255, 255, 0.4);
 }
