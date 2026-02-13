@@ -44,7 +44,6 @@ export default {
    DESIGN TOKENS
    ============================================ */
 :root {
-  --sidebar-width: 220px;
   --accent-cyan: #00ffff;
   --accent-cyan-dim: rgba(0, 255, 255, 0.3);
   --card-bg: rgba(255, 255, 255, 0.05);
@@ -80,13 +79,10 @@ h2 {
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr));
   gap: 25px;
-  justify-content: start;
   justify-items: center;
   align-items: start;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-left: var(--sidebar-width);
-  padding-right: 20px;
 }
 
 /* ============================================
@@ -187,8 +183,6 @@ h2 {
 @media (max-width: 1024px) {
   .certif-grid {
     grid-template-columns: repeat(2, minmax(250px, 1fr));
-    padding-left: 50px;
-    padding-right: 15px;
   }
 }
 
@@ -196,7 +190,6 @@ h2 {
   .certif-grid {
     grid-template-columns: 1fr;
     gap: 15px;
-    padding: 0 10px;
   }
 }
 
