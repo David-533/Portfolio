@@ -1,6 +1,6 @@
 <template>
-  <section class="section" id="mescompetence">
-    <h2 class="section-title">Mes Compétences</h2>
+  <section id="mescompetence" class="section">
+    <h2>Mes Compétences</h2>
     <p class="section-subtitle">Technologies & outils que je maîtrise</p>
 
     <div class="skills-grid">
@@ -8,7 +8,7 @@
         v-for="(skill, index) in skills"
         :key="skill.name"
         class="skill-card"
-        :style="{ animationDelay: `${index * 0.06}s` }"
+        :style="{ animationDelay: `${(index + 1) * 0.1}s` }"
       >
         <img
           class="skill-icon"
@@ -43,168 +43,199 @@ const skills: Skill[] = [
   { name: "Linux", icon: "https://img.icons8.com/color/200/linux--v1.png" },
   { name: "Tailwind CSS", icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" },
   { name: "Vue.js", icon: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" },
-  { name: "GitLab", icon: "https://img.icons8.com/color/200/gitlab.png" },
+  { name: "GitHub", icon: "https://img.icons8.com/color/200/github--v1.png" },
 ];
 </script>
 
 <style scoped>
-/* ─── Section ─── */
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --accent-cyan: #00ffff;
+  --accent-cyan-dim: rgba(0, 255, 255, 0.3);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-radius: 15px;
+}
+
+/* ============================================
+   SECTION
+   ============================================ */
 .section {
-  padding: 110px 30px 80px;
   text-align: center;
-  color: #fff;
-  background: #0a0a0f;
-  position: relative;
+  padding: 120px 20px 60px;
+  background-color: black;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  min-height: 100vh;
 }
 
-.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 600px 400px at 20% 20%, rgba(99, 102, 241, 0.08), transparent),
-    radial-gradient(ellipse 500px 350px at 80% 70%, rgba(16, 185, 129, 0.06), transparent);
-  pointer-events: none;
-}
-
-/* ─── Title ─── */
-.section-title {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+h2 {
+  font-size: 30px;
+  color: #ffffff;
   margin-bottom: 12px;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #6366f1, #10b981);
-  margin: 14px auto 0;
-  border-radius: 2px;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  animation: fadeInDown 1s ease;
+  letter-spacing: 1px;
 }
 
 .section-subtitle {
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 13px;
   margin-bottom: 50px;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeInDown 1s ease 0.15s both;
 }
 
-/* ─── Grid ─── */
+/* ============================================
+   GRILLE
+   ============================================ */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  max-width: 820px;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 22px;
+  justify-items: center;
+  align-items: start;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* ─── Card ─── */
+/* ============================================
+   CARTE
+   ============================================ */
 .skill-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--accent-cyan-dim);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: var(--card-radius);
   padding: 28px 16px 22px;
+  width: 100%;
+  max-width: 190px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   cursor: default;
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 
-  /* Staggered entrance animation */
+  /* Animation d'entrée — delay dynamique via :style */
   opacity: 0;
-  transform: translateY(24px);
-  animation: fadeInUp 0.5s ease forwards;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Ligne lumineuse animée en haut de la carte */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan), #00e5ff, var(--accent-cyan));
+  background-size: 200% 100%;
+  animation: glowLine 4s linear infinite;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  will-change: background-position;
 }
 
 .skill-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow:
-    0 8px 32px rgba(99, 102, 241, 0.12),
-    0 0 0 1px rgba(99, 102, 241, 0.1);
+  transform: translateY(-8px) scale(1.03);
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
 }
 
-/* Glow effect */
-.skill-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2));
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: -1;
-  filter: blur(12px);
-}
-
-.skill-card:hover::before {
-  opacity: 1;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ─── Icon ─── */
+/* ============================================
+   ICONE
+   ============================================ */
 .skill-icon {
   width: 52px;
   height: 52px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.25));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .skill-card:hover .skill-icon {
-  transform: scale(1.12);
-  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.25));
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.5));
 }
 
-/* ─── Label ─── */
+/* ============================================
+   LABEL
+   ============================================ */
 .skill-label {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .skill-card:hover .skill-label {
-  color: #fff;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
 }
 
-/* ─── Responsive ─── */
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes glowLine {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
   .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    gap: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 14px;
   }
 
   .section {
-    padding: 80px 16px 60px;
+    padding: 80px 16px 50px;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .skill-card,
+  .skill-card::before,
+  h2,
+  .section-subtitle {
+    animation: none;
+    opacity: 1;
+  }
+
+  .skill-card {
+    transition: none;
   }
 }
 </style>
