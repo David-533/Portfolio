@@ -6,7 +6,7 @@
     <div class="card intro-card">
       <p>Bonjour, Je m'appelle David.</p>
       <p>
-        Je suis actuellement étudiant au lycée Saint Hilaire en première année de BTS SIO
+        Je suis actuellement étudiant au lycée Saint Hilaire en deuxième année de BTS SIO
         (Services Informatiques aux Organisations) dans l'option SLAM
         (Solutions Logicielles et Application Métier).
       </p>
@@ -40,14 +40,8 @@
           concevoir, développer et maintenir des logiciels et applications adaptés aux besoins des entreprises.
         </p>
       </div>
-      <span class="slam-note">👈 (la filière que j’ai choisie)</span>
-    </div>
-
-    <!-- Bouton CV -->
-    <div class="centre-page">
-      <a href="CV David Ramin.jpg" target="_blank" class="btn-rapport">Mon CV</a>
-    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -204,48 +198,7 @@ h2.neon-title {
   }
 }
 
-/* Bouton CV */
-.centre-page {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
 
-.btn-rapport {
-  position: relative;
-  padding: 12px 28px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background-color: transparent;
-  border: 2px solid white;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-/* Effet de cadre animé */
-.btn-rapport::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  border: 2px solid white;
-  border-radius: 8px;
-  box-sizing: border-box;
-  pointer-events: none;
-  animation: rotateBorder 2s linear infinite;
-}
-
-
-.btn-rapport:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px white, 0 0 20px white;
-}
 
 
 /* Responsive */

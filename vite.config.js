@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -10,6 +9,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  base: '/Portfolio/', // ← remplace par le nom de ton dépôt GitHub
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
