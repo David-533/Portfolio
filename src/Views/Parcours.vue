@@ -29,33 +29,34 @@
   <div class="section" id="monparcours-professionnel">
     <h2>Mon Parcours Professionnel</h2>
     <div class="timeline">
-
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>SNCF</h3>
           <div class="bulle-date">19 Mai - 20 Juin 2025</div>
         </div>
       </div>
-      <div class="timeline-item neon-blanc">
-        <div class="timeline-content synthese">
-          <h3>📄 Note de Synthèse — SNCF</h3>
-          <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Voir le document</a>
-        </div>
-      </div>
-
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>Stage 2</h3>
           <div class="bulle-date">Mars 2024</div>
         </div>
       </div>
-      <div class="timeline-item neon-blanc">
-        <div class="timeline-content synthese">
-          <h3>📄 Note de Synthèse — Stage 2</h3>
-          <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Voir le document</a>
-        </div>
-      </div>
+    </div>
+  </div>
 
+  <div class="section" id="notes-synthese">
+    <h2>Notes de Synthèse</h2>
+    <div class="synthese-grid">
+      <div class="synthese-card">
+        <h3>📄 SNCF</h3>
+        <p>19 Mai - 20 Juin 2025</p>
+        <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Voir le document</a>
+      </div>
+      <div class="synthese-card">
+        <h3>📄 Stage 2</h3>
+        <p>Mars 2024</p>
+        <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Voir le document</a>
+      </div>
     </div>
   </div>
 </template>
@@ -81,6 +82,7 @@ h2 {
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* Timeline */
 .timeline {
   position: relative;
   margin: 0 auto;
@@ -105,17 +107,8 @@ h2 {
   align-items: flex-start;
 }
 
-/* Bloc Note de Synthèse avec néon blanc */
-.timeline-content.synthese {
-  background-color: #111;
-  border: 2px solid white;
-  box-shadow: 0 0 12px #ffffff, 0 0 25px #ffffffaa, 0 0 40px #ffffff55;
-  animation: neonPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes neonPulse {
-  0%, 100% { box-shadow: 0 0 10px #fff, 0 0 20px #ffffffaa; }
-  50% { box-shadow: 0 0 20px #fff, 0 0 40px #ffffffcc, 0 0 60px #ffffff55; }
+.timeline-content:hover {
+  transform: scale(1.03);
 }
 
 .timeline-content h3 {
@@ -149,27 +142,60 @@ h2 {
   100% { background-position: 0% 50%; }
 }
 
-.timeline-content:hover {
+/* Notes de synthèse en grille */
+.synthese-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.synthese-card {
+  background-color: #1a1a1a;
+  border: 1px solid #ffffff22;
+  padding: 25px;
+  border-radius: 10px;
+  color: #ffffff;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+.synthese-card:hover {
   transform: scale(1.03);
+}
+
+.synthese-card h3 {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.synthese-card p {
+  color: #aaa;
+  margin: 0;
+  font-size: 14px;
 }
 
 .btn-rapport {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 8px 12px;
-  border: 2px solid #ffffff;
+  border: 2px solid #00ffff;
   border-radius: 6px;
-  color: #ffffff;
+  color: #00ffff;
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
-  text-shadow: 0 0 5px #ffffffaa;
+  text-shadow: 0 0 5px #00ffffaa;
 }
 
 .btn-rapport:hover {
-  background: #ffffff;
+  background: #00ffff;
   color: #111;
-  box-shadow: 0 0 15px #ffffff;
+  box-shadow: 0 0 15px #00ffff;
 }
 
 @media (max-width: 768px) {
@@ -177,8 +203,9 @@ h2 {
     padding-left: 15px;
     border-left: 2px solid #00ffff33;
   }
-  .timeline-content {
-    width: 100%;
+  .synthese-grid {
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
