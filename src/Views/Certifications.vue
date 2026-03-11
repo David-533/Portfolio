@@ -70,7 +70,7 @@ h2 {
   border: 1px solid #ffffff0f;
   border-radius: 10px;
   padding: 16px 18px;
-  text-align: center;
+  text-align: right;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease;
