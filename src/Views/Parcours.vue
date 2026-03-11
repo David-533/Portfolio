@@ -40,7 +40,7 @@
         <div class="timeline-content">
           <h3>MF2i</h3>
           <p>Stage en entreprise</p>
-          <div class="bulle-date">Mars 2024</div>
+          <div class="bulle-date">12 Janvier - 20 Février 2026</div>
         </div>
       </div>
     </div>
