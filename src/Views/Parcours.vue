@@ -32,12 +32,14 @@
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>SNCF</h3>
+          <p>Stage en entreprise</p>
           <div class="bulle-date">19 Mai - 20 Juin 2025</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>Stage 2</h3>
+          <p>Stage en entreprise</p>
           <div class="bulle-date">Mars 2024</div>
         </div>
       </div>
@@ -48,14 +50,20 @@
     <h2>Notes de Synthèse</h2>
     <div class="synthese-grid">
       <div class="synthese-card">
-        <h3>📄 SNCF</h3>
-        <p>19 Mai - 20 Juin 2025</p>
-        <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Voir le document</a>
+        <div class="synthese-icon">📄</div>
+        <div class="synthese-info">
+          <h3>SNCF</h3>
+          <p>19 Mai - 20 Juin 2025</p>
+        </div>
+        <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Voir →</a>
       </div>
       <div class="synthese-card">
-        <h3>📄 Stage 2</h3>
-        <p>Mars 2024</p>
-        <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Voir le document</a>
+        <div class="synthese-icon">📄</div>
+        <div class="synthese-info">
+          <h3>Stage 2</h3>
+          <p>Mars 2024</p>
+        </div>
+        <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Voir →</a>
       </div>
     </div>
   </div>
@@ -69,8 +77,8 @@ export default {
 
 <style scoped>
 .section {
-  padding: 120px 20px 50px;
-  max-width: 900px;
+  padding: 140px 40px 80px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -78,134 +86,152 @@ h2 {
   text-align: center;
   color: #00ffff;
   text-shadow: 0 0 10px #00ffffaa;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   font-family: 'Segoe UI', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Timeline */
 .timeline {
   position: relative;
-  margin: 0 auto;
-  padding-left: 20px;
-  border-left: 3px solid #00ffff33;
+  padding-left: 24px;
+  border-left: 2px solid #ffffff15;
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 22px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ffff;
+  box-shadow: 0 0 8px #00ffff;
 }
 
 .timeline-content {
-  background-color: #1a1a1a;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #00ffff55;
+  background-color: #141414;
+  padding: 24px 28px;
+  border-radius: 12px;
+  border: 1px solid #ffffff0f;
   color: #ffffff;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 8px;
 }
 
 .timeline-content:hover {
-  transform: scale(1.03);
+  transform: translateX(6px);
+  border-color: #00ffff33;
 }
 
 .timeline-content h3 {
-  margin-top: 0;
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .timeline-content p {
   font-family: 'Roboto', sans-serif;
-  color: #ddd;
-  margin: 5px 0;
+  color: #888;
+  margin: 0;
+  font-size: 14px;
 }
 
+/* Bulle date */
 .bulle-date {
   display: inline-block;
-  margin-top: 10px;
-  padding: 6px 14px;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
   border-radius: 20px;
-  color: white;
-  background: linear-gradient(270deg, #00ffff, #ff00c8);
-  background-size: 800% 800%;
-  animation: bulleColorAnim 5s ease infinite;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  color: #00ffff;
+  border: 1px solid #00ffff44;
+  background: #00ffff0d;
+  letter-spacing: 0.5px;
 }
 
-@keyframes bulleColorAnim {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Notes de synthèse en grille */
+/* Notes de synthèse */
 .synthese-grid {
   display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .synthese-card {
-  background-color: #1a1a1a;
-  border: 1px solid #ffffff22;
-  padding: 25px;
-  border-radius: 10px;
+  background-color: #141414;
+  border: 1px solid #ffffff0f;
+  padding: 20px 28px;
+  border-radius: 12px;
   color: #ffffff;
-  width: 250px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  transition: transform 0.3s ease;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .synthese-card:hover {
-  transform: scale(1.03);
+  transform: translateX(6px);
+  border-color: #00ffff33;
 }
 
-.synthese-card h3 {
-  margin: 0;
+.synthese-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.synthese-info {
+  flex: 1;
+}
+
+.synthese-info h3 {
+  margin: 0 0 4px;
   font-family: 'Segoe UI', sans-serif;
+  font-size: 17px;
 }
 
-.synthese-card p {
-  color: #aaa;
+.synthese-info p {
   margin: 0;
-  font-size: 14px;
+  color: #888;
+  font-size: 13px;
 }
 
 .btn-rapport {
-  display: inline-block;
-  margin-top: 5px;
-  padding: 8px 12px;
-  border: 2px solid #00ffff;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border: 1px solid #00ffff44;
+  border-radius: 8px;
   color: #00ffff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 14px;
   transition: 0.3s;
-  text-shadow: 0 0 5px #00ffffaa;
+  white-space: nowrap;
+  background: #00ffff0d;
 }
 
 .btn-rapport:hover {
   background: #00ffff;
   color: #111;
-  box-shadow: 0 0 15px #00ffff;
+  border-color: #00ffff;
 }
 
 @media (max-width: 768px) {
-  .timeline {
-    padding-left: 15px;
-    border-left: 2px solid #00ffff33;
+  .section {
+    padding: 120px 20px 60px;
   }
-  .synthese-grid {
-    flex-direction: column;
-    align-items: center;
+  .synthese-card {
+    flex-wrap: wrap;
   }
 }
 </style>
