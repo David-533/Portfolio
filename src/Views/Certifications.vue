@@ -39,43 +39,48 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
+
 .section {
-  padding: 180px 40px 60px;
-  max-width: 1100px;
-  margin: 0 auto;
   text-align: center;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 120px 20px 60px;
+  background-color: black;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  min-height: 100vh;
 }
 
 h2 {
+  font-size: 30px;
   color: #00ffff;
-  text-shadow: 0 0 10px #00ffffaa;
-  margin-bottom: 50px;
-  font-size: 28px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px #00ffffaa;
+  animation: fadeInDown 1s ease;
+  letter-spacing: 1px;
 }
 
-/* Grille */
 .certif-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Carte */
 .certif-card {
-  background: #141414;
-  border: 1px solid #ffffff0f;
-  border-radius: 10px;
-  padding: 16px 18px;
-  text-align: right;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: all 0.4s ease;
   opacity: 0;
-  animation: fadeInUp 0.5s forwards;
+  animation: fadeInUp 0.8s forwards;
 }
 
 .certif-card::before {
@@ -83,47 +88,52 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   width: 100%;
-  background: linear-gradient(90deg, #00ffff, #ff00c8);
-  border-radius: 10px 10px 0 0;
+  background: linear-gradient(90deg, #00ffff, #00e5ff, #00ffff);
+  background-size: 200% 100%;
+  animation: glowLine 4s linear infinite;
+  border-radius: 15px 15px 0 0;
 }
 
 .certif-card:hover {
-  transform: translateY(-4px);
-  border-color: #00ffff33;
+  transform: translateY(-8px) scale(1.03);
+  border-color: #00ffff99;
+  box-shadow: 0 0 30px #00ffff66;
 }
 
 .certif-card h3 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  margin: 0 0 8px;
-  line-height: 1.4;
-  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ffff55;
 }
 
 .certif-card .source {
   font-size: 12px;
-  color: #888;
-  margin: 0;
+  opacity: 0.7;
 }
 
-/* Animations */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsive */
+@keyframes fadeInDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glowLine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
 @media (max-width: 1024px) {
-  .certif-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
   .certif-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .certif-grid { grid-template-columns: 1fr; }
 }
 </style>
