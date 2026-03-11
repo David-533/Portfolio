@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
 .section {
-  padding: 140px 40px 60px;
+  padding: 180px 40px 60px;
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;
