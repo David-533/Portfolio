@@ -30,7 +30,7 @@
           class="carte-image"
         >
         <a 
-          href="https://legendary-zuccutto-faa6a0.netlify.app" 
+          href="https://david-533.github.io/gsh-social/" 
           target="_blank" 
           class="date-bulle"
         >
