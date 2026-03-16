@@ -15,7 +15,7 @@
         >
 
         <a 
-          href="https://docs.google.com/document/d/1rIRTp4-hhE1YO84PA9y5QOIGN84jmwA1RisCV7FLyZs/edit?usp=sharing" 
+          href="https://docs.google.com/document/d/1rIRTp4-hhE1YO84PA9y5QOIGN84jmwA1RisCV7FLyZs/edit?tab=t.0" 
           target="_blank" 
           class="date-bulle"
         >
@@ -72,7 +72,7 @@
         >
 
         <a 
-          href="https://docs.google.com/document/d/1KG--GrI2fKsoOHa-S8FOoJedPK-2sXIpc5tnXkrHTc8/edit?usp=sharing" 
+          href="https://docs.google.com/document/d/1KG--GrI2fKsoOHa-S8FOoJedPK-2sXIpc5tnXkrHTc8/edit?tab=t.0" 
           target="_blank" 
           class="date-bulle"
         >
@@ -90,7 +90,7 @@
         >
 
         <a 
-          href="https://docs.google.com/document/d/1hF0lc3QFmj0v5-1YAJWAS9JlC67tcnITHxxkOz7mKWc/edit?usp=sharing" 
+          href="https://docs.google.com/document/d/1hF0lc3QFmj0v5-1YAJWAS9JlC67tcnITHxxkOz7mKWc/edit?tab=t.0" 
           target="_blank" 
           class="date-bulle"
         >
