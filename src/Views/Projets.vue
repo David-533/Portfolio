@@ -20,24 +20,7 @@
           Voir le projet
         </a>
       </div>
- 
-      <!-- Carte 2 : CV -->
-      <div class="parcours-carte">
-        <h3>CV</h3>
-        <img 
-          src="https://www.primocv.com/wp-content/uploads/2018/07/cv_thematique.png" 
-          alt="Projet CV" 
-          class="carte-image"
-        >
-        <a 
-          href="https://whimsical-syrniki-5000b8.netlify.app/" 
-          target="_blank" 
-          class="date-bulle"
-        >
-          Voir le projet
-        </a>
-      </div>
- 
+
       <!-- Carte 3 : GSH -->
       <div class="parcours-carte">
         <h3>GSH SOCIAL</h3>
