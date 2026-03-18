@@ -1,4 +1,5 @@
 <template>
+  <!-- Parcours Scolaire -->
   <div class="section" id="monparcours">
     <h2>Mon Parcours Scolaire</h2>
     <div class="timeline">
@@ -26,6 +27,7 @@
     </div>
   </div>
 
+  <!-- Parcours Professionnel -->
   <div class="section" id="monparcours-professionnel">
     <h2>Mon Parcours Professionnel</h2>
     <div class="timeline">
@@ -37,13 +39,14 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
-          <h3>Stage 2</h3>
-          <div class="bulle-date">Mars 2024</div>
+          <h3>MF2i</h3>
+          <div class="bulle-date">12 Janvier - 20 Février 2026</div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Notes de Synthèse -->
   <div class="section" id="notes-synthese">
     <h2>Notes de Synthèse</h2>
     <div class="notes-container">
@@ -53,8 +56,8 @@
         <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-note">Lire la note</a>
       </div>
       <div class="note-card">
-        <h3>Stage 2</h3>
-        <p class="note-date">Mars 2024</p>
+        <h3>MF2i</h3>
+        <p class="note-date">12 Janvier - 20 Février 2026</p>
         <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-note">Lire la note</a>
       </div>
     </div>
@@ -69,7 +72,7 @@ export default {
 
 <style scoped>
 .section {
-  padding: 120px 20px 50px; /* espace au dessus pour la nav */
+  padding: 120px 20px 50px;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -82,21 +85,25 @@ h2 {
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* Séparateur entre sections */
+.section + .section {
+  border-top: 1px solid #00ffff22;
+  padding-top: 60px;
+}
+
 /* Timeline verticale */
 .timeline {
   position: relative;
   margin: 0 auto;
   padding-left: 20px;
-  border-left: 3px solid #00ffff33; /* ligne verticale */
+  border-left: 3px solid #00ffff33;
 }
 
-/* Chaque étape */
 .timeline-item {
   position: relative;
   margin-bottom: 50px;
 }
 
-/* Carte de contenu */
 .timeline-content {
   background-color: #1a1a1a;
   padding: 20px;
@@ -106,12 +113,11 @@ h2 {
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* pour que le bouton aille à droite */
+  align-items: flex-start;
 }
 
 .timeline-content h3 {
   margin-top: 0;
-
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -121,7 +127,7 @@ h2 {
   margin: 5px 0;
 }
 
-/* Date style néon */
+/* Bulle date néon */
 .bulle-date {
   display: inline-block;
   margin-top: 10px;
@@ -142,12 +148,11 @@ h2 {
   100% { background-position: 0% 50%; }
 }
 
-/* Hover effet */
 .timeline-content:hover {
   transform: scale(1.03);
 }
 
-/* Section Notes de Synthèse */
+/* Notes de Synthèse */
 .notes-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
