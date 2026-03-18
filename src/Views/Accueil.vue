@@ -2,16 +2,15 @@
   <title>Portfolio BTS SIO | David RAMIN</title>
 
   <div class="page_accueil">
-    <img 
-      src="https://i.pinimg.com/originals/22/c8/87/22c887ab8cd375d078f0f2178e400374.gif" 
+    <img
+      src="https://i.pinimg.com/originals/22/c8/87/22c887ab8cd375d078f0f2178e400374.gif"
       alt="Animation accueil"
     >
-  </div>
-
-  <div class="texte-sur-image">
-    <h1>DAVID RAMIN</h1>
-    <p>ETUDIANT EN BTS SIO - OPTION SLAM</p>
-    <p>Bienvenue sur mon Portfolio</p>
+    <div class="texte-sur-image">
+      <h1>DAVID RAMIN</h1>
+      <p>ETUDIANT EN BTS SIO - OPTION SLAM</p>
+      <p>Bienvenue sur mon Portfolio</p>
+    </div>
   </div>
 </template>
 
@@ -29,9 +28,15 @@ body {
 }
 
 /* Image responsive et limitée à la taille de l'écran */
+.page_accueil {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
 .page_accueil img {
   width: 100%;
-  max-height: 100vh; /* Hauteur maximale = hauteur écran */
+  height: 100%;
   object-fit: cover; /* L'image remplit l'espace sans déformer */
   display: block;
 }

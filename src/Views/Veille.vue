@@ -30,23 +30,23 @@
     </div>
 
     <div class="article-carte">
-      <img src="https://images.frandroid.com/wp-content/uploads/2025/01/tesla-model-y-frandroid-my-driving-front.jpg" alt="Tesla décevante">
-      <p><strong>Article :</strong> Voiture Tesla décevante.</p>
-      <p><strong>Publié le :</strong> 13 mars 2025</p>
-      <p><strong>Source :</strong> frandroid.com</p>
-      <p><strong>Résumé :</strong> Tesla avait prévu de lancer une voiture électrique abordable, surnommée la "Tesla à 25 000 $", pour concurrencer les modèles chinois à bas prix. Cependant, face à une baisse de la demande et à une sous-utilisation des lignes de production des Model 3 et Model Y, Elon Musk a décidé de réorienter la stratégie.</p>
-      <p><a href="https://www.frandroid.com/marques/tesla/2541525_la-future-voiture-electrique-abordable-de-tesla-serait-decevante-voici-les-premiers-details" target="_blank">Cliquez ici pour lire l'article</a></p>
+      <img src="https://www.presse-citron.net/app/uploads/2024/04/tesla-unsplash-carter-baran.jpg" alt="Nvidia Tesla">
+      <p><strong>Article :</strong> Même Nvidia est impressionné par la conduite autonome de Tesla</p>
+      <p><strong>Publié le :</strong> 4 janvier 2026</p>
+      <p><strong>Source :</strong> rouleur-electrique.fr</p>
+      <p><strong>Résumé :</strong> Un expert de Nvidia affirme que le FSD 14.2.2 de Tesla conduit désormais comme un humain, au point d’être indiscernable, tout en alertant sur la dépendance croissante à ces technologies.</p>
+      <p><a href="https://rouleur-electrique.fr/un-expert-nvidia-impressionne-par-la-conduite-autonome-tesla-impossible-de-distinguer-lia-de-lhumain/" target="_blank">Cliquez ici pour lire l’article</a></p>
     </div>
 
-<div class="article-carte">
-  <img src="https://rouleur-electrique.fr/wp-content/uploads/2025/10/La-conduite-autonome-Tesla-FSD-v14-decoit-les-premieres-a.jpg" alt="Tesla FSD v14 – conduite autonome décevante">
-  <p><strong>Article :</strong> La conduite autonome Tesla FSD v14 déçoit les premières attentes</p>
-  <p><strong>Publié le :</strong> 17 octobre 2025</p>
-  <p><strong>Source :</strong> rouleur-electrique.fr</p>
-  <p><strong>Résumé :</strong> La mise à jour FSD v14 de Tesla apporte des progrès dans l’autonomie, mais reste loin des promesses initiales : les conducteurs rapportent encore des interventions fréquentes et des limites matérielles émergent.</p>
-  <p><a href="https://rouleur-electrique.fr/la-conduite-autonome-tesla-fsd-v14-decoit-les-premieres-attentes/" target="_blank">Cliquez ici pour lire l’article</a></p>
-</div>
-</div>
+    <div class="article-carte">
+      <img src="https://www.presse-citron.net/app/uploads/2024/10/hyundai-wemo.jpg" alt="Hyundai transformation">
+      <p><strong>Article :</strong> IA, robotique, autonomie : Hyundai prépare une transformation radicale.</p>
+      <p><strong>Publié le :</strong> 2 janvier 2026</p>
+      <p><strong>Source :</strong> rouleur-electrique.fr</p>
+      <p><strong>Résumé :</strong> Hyundai veut rattraper son retard en conduite autonome. Le groupe teste une Ioniq 6 entièrement autonome, multiplie les partenariats (Motional, Waymo) et prépare une stratégie IA/robotique pour devenir un acteur majeur du secteur.</p>
+      <p><a href="https://rouleur-electrique.fr/hyundai-vise-lautonomie-totale-pour-rattraper-tesla-et-waymo/#google_vignette" target="_blank">Cliquez ici pour lire l’article</a></p>
+    </div>
+  </div>
 </template>
 
 <script>

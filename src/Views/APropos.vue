@@ -40,7 +40,6 @@
           concevoir, développer et maintenir des logiciels et applications adaptés aux besoins des entreprises.
         </p>
       </div>
-      <span class="slam-note">👈 (la filière que j’ai choisie)</span>
     </div>
   </div>
 </template>
@@ -169,49 +168,7 @@ h2.neon-title {
   justify-content: center;
 }
 
-.slam-note {
-  position: absolute;
-  right: 90px;
-  font-family: 'Roboto', sans-serif;
-  color: #ffffffcc;
-  font-size: 1rem;
-  white-space: nowrap;
-  text-shadow: 0 0 6px #00ff00;
-  font-style: italic;
-  animation: slide-wiggle 2s ease-in-out infinite, glow-pulse 3s ease-in-out infinite;
-}
-
-/* 🔁 Animation du petit mouvement gauche-droite */
-@keyframes slide-wiggle {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-6px); }
-}
-
-/* ✨ Animation de lumière subtile */
-@keyframes glow-pulse {
-  0%, 100% {
-    text-shadow: 0 0 6px #00ff00, 0 0 10px #00ff0066;
-    opacity: 1;
-  }
-  50% {
-    text-shadow: 0 0 10px #00ffee, 0 0 20px #00ffee88;
-    opacity: 0.9;
-  }
-}
-
-
-
-
 /* Responsive */
-@media (max-width: 1024px) {
-  .slam-note {
-    position: static;
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-  }
-}
-
 @media (max-width: 768px) {
   .apropos-container {
     margin-left: 0;

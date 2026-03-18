@@ -23,27 +23,7 @@
         </a>
       </div>
 
-      <!-- Carte 2 : CV -->
-      <div class="parcours-carte">
-        <h3>CV</h3>
-
-        <img 
-          src="https://www.primocv.com/wp-content/uploads/2018/07/cv_thematique.png" 
-          alt="Projet CV" 
-          class="carte-image"
-        >
-
-        <a 
-          href="https://whimsical-syrniki-5000b8.netlify.app/" 
-          target="_blank" 
-          class="date-bulle"
-        >
-          Voir le projet
-        </a>
-      </div>
-
-      
-      <!-- Carte 3 : GSH -->
+      <!-- Carte 2 : GSH -->
       <div class="parcours-carte">
         <h3>GSH SOCIAL</h3>
 
@@ -53,9 +33,47 @@
           class="carte-image"
         >
 
-        <a 
-          href="https://legendary-zuccutto-faa6a0.netlify.app" 
-          target="_blank" 
+        <a
+          href="https://legendary-zuccutto-faa6a0.netlify.app"
+          target="_blank"
+          class="date-bulle"
+        >
+          Voir le projet
+        </a>
+      </div>
+
+      <!-- Carte 3 : BurpSuite -->
+      <div class="parcours-carte">
+        <h3>BurpSuite</h3>
+
+        <img
+          src="https://netforemost.com/wp-content/uploads/2024/09/1705584317236.webp"
+          alt="Burpsuite"
+          class="carte-image"
+        >
+
+        <a
+          href="https://docs.google.com/document/d/1KG--GrI2fKsoOHa-S8FOoJedPK-2sXIpc5tnXkrHTc8/edit?tab=t.0"
+          target="_blank"
+          class="date-bulle"
+        >
+          Voir le projet
+        </a>
+      </div>
+
+      <!-- Carte 4 : Identité numérique -->
+      <div class="parcours-carte">
+        <h3>Identité numérique</h3>
+
+        <img
+          src="https://semji.com/wp-content/uploads/2020/07/Protection-identit%C3%A9-num%C3%A9rique.png"
+          alt="Identité numérique"
+          class="carte-image"
+        >
+
+        <a
+          href="https://docs.google.com/document/d/1hF0lc3QFmj0v5-1YAJWAS9JlC67tcnITHxxkOz7mKWc/edit?tab=t.0"
+          target="_blank"
           class="date-bulle"
         >
           Voir le projet
