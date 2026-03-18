@@ -33,15 +33,29 @@
         <div class="timeline-content">
           <h3>SNCF</h3>
           <div class="bulle-date">19 Mai - 20 Juin 2025</div>
-          <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Note de Synthèse</a>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>Stage 2</h3>
           <div class="bulle-date">Mars 2024</div>
-          <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Note de Synthèse</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="notes-synthese">
+    <h2>Notes de Synthèse</h2>
+    <div class="notes-container">
+      <div class="note-card">
+        <h3>SNCF</h3>
+        <p class="note-date">19 Mai - 20 Juin 2025</p>
+        <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-note">Lire la note</a>
+      </div>
+      <div class="note-card">
+        <h3>Stage 2</h3>
+        <p class="note-date">Mars 2024</p>
+        <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-note">Lire la note</a>
       </div>
     </div>
   </div>
@@ -133,25 +147,64 @@ h2 {
   transform: scale(1.03);
 }
 
-/* Boutons Note de Synthèse alignés à droite */
-.btn-rapport {
-  display: inline-block;
-  margin-left: auto;  /* pousse le bouton à droite */
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: 2px solid #00ffff;
-  border-radius: 6px;
-  color: #00ffff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-  text-shadow: 0 0 5px #00ffffaa;
+/* Section Notes de Synthèse */
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
 }
 
-.btn-rapport:hover {
-  background: #00ffff;
-  color: #111;
-  box-shadow: 0 0 15px #00ffff;
+.note-card {
+  background-color: #1a1a1a;
+  border: 2px solid #00ffff55;
+  border-radius: 10px;
+  padding: 25px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 0 15px #00ffff55;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.note-card:hover {
+  transform: scale(1.05);
+  border-color: #00ffff;
+  box-shadow: 0 0 25px #00ffff77;
+}
+
+.note-card h3 {
+  color: #00ffff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+}
+
+.note-date {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.btn-note {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #00ffff, #ff00c8);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffff55;
+}
+
+.btn-note:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00ffffaa;
 }
 
 /* Responsive */
@@ -164,10 +217,13 @@ h2 {
   .timeline-content {
     width: 100%;
   }
-  
-  .btn-rapport {
-    align-self: flex-start; /* sur mobile bouton à gauche pour éviter débordement */
-    margin-left: 0;
+
+  .notes-container {
+    grid-template-columns: 1fr;
+  }
+
+  .note-card {
+    width: 100%;
   }
 }
 </style>
