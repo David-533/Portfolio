@@ -28,11 +28,20 @@ body {
   overflow: hidden;
 }
 
+/* Container principal */
+.page_accueil {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 /* Image responsive et limitée à la taille de l'écran */
 .page_accueil img {
   width: 100%;
-  max-height: 100vh; /* Hauteur maximale = hauteur écran */
-  object-fit: cover; /* L'image remplit l'espace sans déformer */
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 

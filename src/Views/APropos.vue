@@ -52,7 +52,6 @@ export default {
 
 <style scoped>
 .apropos-container {
-  margin-left: 240px;
   padding: 40px;
   font-family: 'Roboto', sans-serif;
   text-align: center;

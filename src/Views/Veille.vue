@@ -55,9 +55,9 @@ export default {}
 
 <style scoped>
 .section {
-  padding-top: 60px; /* réduit au minimum pour coller au haut */
-  padding-left: 120px; /* garde le décalage vers la droite */
-  padding-right: 80px;
+  padding-top: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-bottom: 40px;
   color: #fff;
   background: #000;

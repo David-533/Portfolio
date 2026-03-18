@@ -87,14 +87,12 @@ export default {
 <style scoped>
 .parcours-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 40px;
-  padding: 60px 0;
+  padding: 60px 40px;
   font-family: Roboto, sans-serif;
-  margin-left: 220px;
 }
  
 /* ====== Cartes ====== */
