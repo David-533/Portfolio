@@ -1,13 +1,11 @@
 <template>
   <title>Portfolio BTS SIO | David RAMIN</title>
-
   <div class="page_accueil">
     <img
       src="https://i.pinimg.com/originals/22/c8/87/22c887ab8cd375d078f0f2178e400374.gif"
       alt="Animation accueil"
     >
   </div>
-
   <div class="texte-sur-image">
     <h1>DAVID RAMIN</h1>
     <p>ETUDIANT EN BTS SIO - OPTION SLAM</p>
@@ -31,8 +29,8 @@ body {
 /* Image responsive et limitée à la taille de l'écran */
 .page_accueil img {
   width: 100%;
-  max-height: 100vh; /* Hauteur maximale = hauteur écran */
-  object-fit: cover; /* L'image remplit l'espace sans déformer */
+  max-height: 100vh;
+  object-fit: cover;
   display: block;
 }
 
@@ -44,8 +42,6 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
 }
 
 /* Titre */
@@ -53,9 +49,11 @@ body {
   color: white;
   margin: 10px 0;
   font-size: 60px;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
-/* Paragraphes animés avec gradient */
+/* Paragraphes animés avec gradient + apparition */
 .texte-sur-image p {
   margin: 10px 0;
   font-size: 20px;
@@ -63,7 +61,8 @@ body {
   background-size: 800% 800%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: colorCycle 6s ease infinite;
+  opacity: 0;
+  animation: colorCycle 6s ease infinite, fadeInUp 1.5s ease-out forwards;
 }
 
 /* Animation du gradient */
@@ -85,7 +84,7 @@ body {
   }
 }
 
-/* Responsive : texte plus petit sur petits écrans */
+/* Responsive */
 @media (max-width: 768px) {
   .texte-sur-image h1 {
     font-size: 40px;
