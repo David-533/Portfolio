@@ -20,13 +20,11 @@ export default {
 </script>
 
 <style scoped>
-/* Supprime tout scroll et marges */
 body {
   margin: 0;
   overflow: hidden;
 }
 
-/* Image responsive et limitée à la taille de l'écran */
 .page_accueil img {
   width: 100%;
   max-height: 100vh;
@@ -34,7 +32,7 @@ body {
   display: block;
 }
 
-/* Texte centré sur l'image */
+/* Centrage du bloc texte */
 .texte-sur-image {
   position: absolute;
   top: 50%;
@@ -42,6 +40,8 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  animation: fadeInUp 1.5s ease-out forwards;
+  opacity: 0;
 }
 
 /* Titre */
@@ -49,11 +49,9 @@ body {
   color: white;
   margin: 10px 0;
   font-size: 60px;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
 }
 
-/* Paragraphes animés avec gradient + apparition */
+/* Paragraphes avec gradient animé */
 .texte-sur-image p {
   margin: 10px 0;
   font-size: 20px;
@@ -61,22 +59,20 @@ body {
   background-size: 800% 800%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  opacity: 0;
-  animation: colorCycle 6s ease infinite, fadeInUp 1.5s ease-out forwards;
+  animation: colorCycle 6s ease infinite;
 }
 
-/* Animation du gradient */
 @keyframes colorCycle {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Animation apparition texte */
+/* fadeInUp sur le conteneur entier */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, -30%);
   }
   to {
     opacity: 1;
@@ -84,7 +80,6 @@ body {
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .texte-sur-image h1 {
     font-size: 40px;
@@ -94,4 +89,3 @@ body {
   }
 }
 </style>
-
