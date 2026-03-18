@@ -6,7 +6,7 @@
       alt="Animation accueil"
     >
   </div>
-  <div class="texte-sur-image">
+  <div class="texte-sur-image" :class="{ visible: isVisible }">
     <h1>DAVID RAMIN</h1>
     <p>ETUDIANT EN BTS SIO - OPTION SLAM</p>
     <p>Bienvenue sur mon Portfolio</p>
@@ -16,6 +16,16 @@
 <script>
 export default {
   name: "Accueil",
+  data() {
+    return {
+      isVisible: false,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isVisible = true;
+    }, 100);
+  },
 };
 </script>
 
@@ -32,26 +42,28 @@ body {
   display: block;
 }
 
-/* Centrage du bloc texte */
 .texte-sur-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  animation: fadeInUp 1.5s ease-out forwards;
   opacity: 0;
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-/* Titre */
+.texte-sur-image.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
 .texte-sur-image h1 {
   color: white;
   margin: 10px 0;
   font-size: 60px;
 }
 
-/* Paragraphes avec gradient animé */
 .texte-sur-image p {
   margin: 10px 0;
   font-size: 20px;
@@ -66,18 +78,6 @@ body {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* fadeInUp sur le conteneur entier */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -30%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
 }
 
 @media (max-width: 768px) {
