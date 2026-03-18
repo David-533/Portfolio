@@ -58,34 +58,6 @@ export default {
   color: white;
   text-decoration: none;
 }
-
-/* Responsive mobile */
-@media (max-width: 768px) {
-  .navbar {
-    width: 100%;
-    height: auto;
-    padding-top: 0;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  }
-
-  .navbar ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .navbar li {
-    margin: 10px 15px;
-  }
-
-  .navbar a {
-    font-size: 14px;
-    padding: 8px 0;
-  }
-}
 </style>
 
 

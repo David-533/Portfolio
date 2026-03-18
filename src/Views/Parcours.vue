@@ -32,38 +32,16 @@
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>SNCF</h3>
-          <p>Stage en entreprise</p>
           <div class="bulle-date">19 Mai - 20 Juin 2025</div>
+          <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Note de Synthèse</a>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
-          <h3>MF2i</h3>
-          <p>Stage en entreprise</p>
-          <div class="bulle-date">12 Janvier - 20 Février 2026</div>
+          <h3>Stage 2</h3>
+          <div class="bulle-date">Mars 2024</div>
+          <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Note de Synthèse</a>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" id="notes-synthese">
-    <h2>Notes de Synthèse</h2>
-    <div class="synthese-grid">
-      <div class="synthese-card">
-        <div class="synthese-icon">📄</div>
-        <div class="synthese-info">
-          <h3>SNCF</h3>
-          <p>19 Mai - 20 Juin 2025</p>
-        </div>
-        <a href="https://docs.google.com/document/d/1iJk8K_P8Y5GqTHFvMJmAL3AUDnLNSXkruNEG96JNSZQ/edit?usp=drive_link" target="_blank" class="btn-rapport">Voir →</a>
-      </div>
-      <div class="synthese-card">
-        <div class="synthese-icon">📄</div>
-        <div class="synthese-info">
-          <h3>MF2i</h3>
-          <p>12 Janvier - 20 Février 2026</p>
-        </div>
-        <a href="https://docs.google.com/document/d/1V3HrWaQiUUAHQSNflrX6WqDdDpQy0uVBTqnKsH-bKsQ/edit?tab=t.0" target="_blank" class="btn-rapport">Voir →</a>
       </div>
     </div>
   </div>
@@ -77,8 +55,8 @@ export default {
 
 <style scoped>
 .section {
-  padding: 140px 40px 80px;
-  max-width: 860px;
+  padding: 120px 20px 50px; /* espace au dessus pour la nav */
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -86,152 +64,110 @@ h2 {
   text-align: center;
   color: #00ffff;
   text-shadow: 0 0 10px #00ffffaa;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   font-family: 'Segoe UI', sans-serif;
-  font-size: 28px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
-/* Timeline */
+/* Timeline verticale */
 .timeline {
   position: relative;
-  padding-left: 24px;
-  border-left: 2px solid #ffffff15;
+  margin: 0 auto;
+  padding-left: 20px;
+  border-left: 3px solid #00ffff33; /* ligne verticale */
 }
 
+/* Chaque étape */
 .timeline-item {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -31px;
-  top: 22px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #00ffff;
-  box-shadow: 0 0 8px #00ffff;
-}
-
+/* Carte de contenu */
 .timeline-content {
-  background-color: #141414;
-  padding: 24px 28px;
-  border-radius: 12px;
-  border: 1px solid #ffffff0f;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffff55;
   color: #ffffff;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.timeline-content:hover {
-  transform: translateX(6px);
-  border-color: #00ffff33;
+  align-items: flex-start; /* pour que le bouton aille à droite */
 }
 
 .timeline-content h3 {
-  margin: 0;
+  margin-top: 0;
+
   font-family: 'Segoe UI', sans-serif;
-  font-size: 18px;
-  color: #ffffff;
 }
 
 .timeline-content p {
   font-family: 'Roboto', sans-serif;
-  color: #888;
-  margin: 0;
-  font-size: 14px;
+  color: #ddd;
+  margin: 5px 0;
 }
 
-/* Bulle date */
+/* Date style néon */
 .bulle-date {
   display: inline-block;
-  padding: 4px 12px;
-  font-size: 13px;
-  font-weight: 600;
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: bold;
   border-radius: 20px;
-  color: #00ffff;
-  border: 1px solid #00ffff44;
-  background: #00ffff0d;
-  letter-spacing: 0.5px;
+  color: white;
+  background: linear-gradient(270deg, #00ffff, #ff00c8);
+  background-size: 800% 800%;
+  animation: bulleColorAnim 5s ease infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 }
 
-/* Notes de synthèse */
-.synthese-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+@keyframes bulleColorAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.synthese-card {
-  background-color: #141414;
-  border: 1px solid #ffffff0f;
-  padding: 20px 28px;
-  border-radius: 12px;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+/* Hover effet */
+.timeline-content:hover {
+  transform: scale(1.03);
 }
 
-.synthese-card:hover {
-  transform: translateX(6px);
-  border-color: #00ffff33;
-}
-
-.synthese-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-}
-
-.synthese-info {
-  flex: 1;
-}
-
-.synthese-info h3 {
-  margin: 0 0 4px;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 17px;
-}
-
-.synthese-info p {
-  margin: 0;
-  color: #888;
-  font-size: 13px;
-}
-
+/* Boutons Note de Synthèse alignés à droite */
 .btn-rapport {
-  padding: 8px 16px;
-  border: 1px solid #00ffff44;
-  border-radius: 8px;
+  display: inline-block;
+  margin-left: auto;  /* pousse le bouton à droite */
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 2px solid #00ffff;
+  border-radius: 6px;
   color: #00ffff;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: bold;
   transition: 0.3s;
-  white-space: nowrap;
-  background: #00ffff0d;
+  text-shadow: 0 0 5px #00ffffaa;
 }
 
 .btn-rapport:hover {
   background: #00ffff;
   color: #111;
-  border-color: #00ffff;
+  box-shadow: 0 0 15px #00ffff;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .section {
-    padding: 120px 20px 60px;
+  .timeline {
+    padding-left: 15px;
+    border-left: 2px solid #00ffff33;
   }
-  .synthese-card {
-    flex-wrap: wrap;
+
+  .timeline-content {
+    width: 100%;
+  }
+  
+  .btn-rapport {
+    align-self: flex-start; /* sur mobile bouton à gauche pour éviter débordement */
+    margin-left: 0;
   }
 }
 </style>

@@ -40,8 +40,9 @@
           concevoir, développer et maintenir des logiciels et applications adaptés aux besoins des entreprises.
         </p>
       </div>
+      <span class="slam-note">👈 (la filière que j’ai choisie)</span>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -52,6 +53,7 @@ export default {
 
 <style scoped>
 .apropos-container {
+  margin-left: 240px;
   padding: 40px;
   font-family: 'Roboto', sans-serif;
   text-align: center;

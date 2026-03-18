@@ -22,29 +22,29 @@
   <div class="photo_article">
     <div class="article-carte">
       <img src="https://www.presse-citron.net/app/uploads/2024/04/tesla-unsplash-carter-baran.jpg" alt="Tesla Autopilot">
-      <p><strong>Article :</strong> Même Nvidia est impressionné par la conduite autonome de Tesla</p>
-      <p><strong>Publié le :</strong> 4 janvier 2026</p>
-      <p><strong>Source :</strong> rouleur-electrique.fr</p>
-      <p><strong>Résumé :</strong> Un expert de Nvidia affirme que le FSD 14.2.2 de Tesla conduit désormais comme un humain, au point d’être indiscernable, tout en alertant sur la dépendance croissante à ces technologies.</p>
-      <p><a href="https://rouleur-electrique.fr/un-expert-nvidia-impressionne-par-la-conduite-autonome-tesla-impossible-de-distinguer-lia-de-lhumain/" target="_blank">Cliquez ici pour lire l'article</a></p>
+      <p><strong>Article :</strong> Tesla : Autopilot sans Lidar est dangereux.</p>
+      <p><strong>Publié le :</strong> 17 mars 2025</p>
+      <p><strong>Source :</strong> presse-citron.net</p>
+      <p><strong>Résumé :</strong> Tesla utilise uniquement des caméras pour son système Autopilot, contrairement à d’autres marques qui ajoutent des radars et des LiDARs. Une vidéo d’un ingénieur, Mark Rober, montre que cette méthode pose problème.</p>
+      <p><a href="https://www.presse-citron.net/cette-video-prouve-que-lautopilot-de-tesla-sans-lidar-est-dangereux/" target="_blank">Cliquez ici pour lire l'article</a></p>
     </div>
 
     <div class="article-carte">
-      <img src="https://www.presse-citron.net/app/uploads/2024/10/hyundai-wemo.jpg" alt="Tesla décevante">
-      <p><strong>Article :</strong> IA, robotique, autonomie : Hyundai prépare une transformation radicale.</p>
-      <p><strong>Publié le :</strong> 2 janvier 2026</p>
-      <p><strong>Source :</strong> rouleur-electrique.fr</p>
-      <p><strong>Résumé :</strong> Hyundai veut rattraper son retard en conduite autonome. Le groupe teste une Ioniq 6 entièrement autonome, multiplie les partenariats (Motional, Waymo) et prépare une stratégie IA/robotique pour devenir un acteur majeur du secteur.</p>
-      <p><a href="https://rouleur-electrique.fr/hyundai-vise-lautonomie-totale-pour-rattraper-tesla-et-waymo/#google_vignette" target="_blank">Cliquez ici pour lire l'article</a></p>
+      <img src="https://images.frandroid.com/wp-content/uploads/2025/01/tesla-model-y-frandroid-my-driving-front.jpg" alt="Tesla décevante">
+      <p><strong>Article :</strong> Voiture Tesla décevante.</p>
+      <p><strong>Publié le :</strong> 13 mars 2025</p>
+      <p><strong>Source :</strong> frandroid.com</p>
+      <p><strong>Résumé :</strong> Tesla avait prévu de lancer une voiture électrique abordable, surnommée la "Tesla à 25 000 $", pour concurrencer les modèles chinois à bas prix. Cependant, face à une baisse de la demande et à une sous-utilisation des lignes de production des Model 3 et Model Y, Elon Musk a décidé de réorienter la stratégie.</p>
+      <p><a href="https://www.frandroid.com/marques/tesla/2541525_la-future-voiture-electrique-abordable-de-tesla-serait-decevante-voici-les-premiers-details" target="_blank">Cliquez ici pour lire l'article</a></p>
     </div>
 
-   <div class="article-carte">
-  <img src="https://techcrunch.com/wp-content/uploads/2025/11/Zoox-San-Francisco-closeup-robotaxi.jpg" alt="Sécurité des robotaxis – NHTSA concertation nationale">
-  <p><strong>Article :</strong> Sécurité des robotaxis : la NHTSA lance une concertation nationale avec les leaders du secteur</p>
-  <p><strong>Publié le :</strong> 7 mars 2026</p>
-  <p><strong>Source :</strong> numerama.com</p>
-  <p><strong>Résumé :</strong> La NHTSA organise un forum national sur la sécurité des véhicules autonomes, réunissant les PDG de Waymo, Zoox et Aurora. L'objectif : harmoniser les normes fédérales et accélérer le déploiement des robotaxis tout en maintenant une surveillance stricte de la sécurité, alors que plusieurs incidents font encore l'objet d'enquêtes.</p>
-  <p><a href="https://www.numerama.com/vroom/2196271-securite-des-robotaxis-la-nhtsa-lance-une-concertation-nationale-avec-les-leaders-du-secteur.html" target="_blank">Cliquez ici pour lire l'article</a></p>
+<div class="article-carte">
+  <img src="https://rouleur-electrique.fr/wp-content/uploads/2025/10/La-conduite-autonome-Tesla-FSD-v14-decoit-les-premieres-a.jpg" alt="Tesla FSD v14 – conduite autonome décevante">
+  <p><strong>Article :</strong> La conduite autonome Tesla FSD v14 déçoit les premières attentes</p>
+  <p><strong>Publié le :</strong> 17 octobre 2025</p>
+  <p><strong>Source :</strong> rouleur-electrique.fr</p>
+  <p><strong>Résumé :</strong> La mise à jour FSD v14 de Tesla apporte des progrès dans l’autonomie, mais reste loin des promesses initiales : les conducteurs rapportent encore des interventions fréquentes et des limites matérielles émergent.</p>
+  <p><a href="https://rouleur-electrique.fr/la-conduite-autonome-tesla-fsd-v14-decoit-les-premieres-attentes/" target="_blank">Cliquez ici pour lire l’article</a></p>
 </div>
 </div>
 </template>
@@ -55,9 +55,9 @@ export default {}
 
 <style scoped>
 .section {
-  padding-top: 60px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-top: 60px; /* réduit au minimum pour coller au haut */
+  padding-left: 120px; /* garde le décalage vers la droite */
+  padding-right: 80px;
   padding-bottom: 40px;
   color: #fff;
   background: #000;
