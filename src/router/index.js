@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 
 import Accueil from '../Views/Accueil.vue'
@@ -11,7 +11,7 @@ import Veille from '../Views/Veille.vue'
 import Contact from '../Views/Contact.vue'
 
 const routes = [
-  { path: '/', redirect: '/accueil' }, // ✅ route par défaut
+  { path: '/', redirect: '/accueil' },
   { path: '/accueil', component: Accueil },
   { path: '/apropos', component: APropos },
   { path: '/projets', component: Projets },
@@ -23,7 +23,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 
