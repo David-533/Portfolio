@@ -30,7 +30,7 @@
     </div>
 
     <div class="article-carte">
-      <img src="https://www.presse-citron.net/app/uploads/2024/04/tesla-unsplash-carter-baran.jpg" alt="Nvidia Tesla">
+      <img src="https://rouleur-electrique.fr/wp-content/uploads/2025/12/Un-expert-Nvidia-impressionne-par-la-conduite-autonome-Tesl.jpg.webp" alt="Nvidia Tesla">
       <p><strong>Article :</strong> Même Nvidia est impressionné par la conduite autonome de Tesla</p>
       <p><strong>Publié le :</strong> 4 janvier 2026</p>
       <p><strong>Source :</strong> rouleur-electrique.fr</p>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="article-carte">
-      <img src="https://www.presse-citron.net/app/uploads/2024/10/hyundai-wemo.jpg" alt="Hyundai transformation">
+      <img src="https://rouleur-electrique.fr/wp-content/uploads/2025/12/Hyundai-vise-lautonomie-totale-pour-rattraper-Tesla-et-Waym.jpg.webp" alt="Hyundai transformation">
       <p><strong>Article :</strong> IA, robotique, autonomie : Hyundai prépare une transformation radicale.</p>
       <p><strong>Publié le :</strong> 2 janvier 2026</p>
       <p><strong>Source :</strong> rouleur-electrique.fr</p>
