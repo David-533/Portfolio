@@ -1,25 +1,32 @@
 <template>
   <section class="section-contact" id="contact">
     <!-- Formulaire -->
-    <form id="contact-form" @submit.prevent="sendEmail" novalidate>
+    <form id="contact-form" autocomplete="off" @submit.prevent="sendEmail" novalidate>
       <p class="form-eyebrow">PRENONS CONTACT</p>
       <h2>Un projet en tête ?</h2>
       <p class="form-intro">Écris-moi quelques lignes, je te répondrai dès que possible.</p>
 
       <div class="form-group" :class="{ invalid: hasSubmitted && !name.trim() }">
-        <input type="text" id="name" name="name" v-model="name" placeholder=" " autocomplete="name" required :aria-invalid="hasSubmitted && !name.trim()" @input="clearFeedback" />
+        <input type="text" id="name" name="name" v-model="name" placeholder=" " autocomplete="off" required :aria-invalid="hasSubmitted && !name.trim()" @input="clearFeedback" />
         <label for="name">Nom</label>
         <span v-if="hasSubmitted && !name.trim()" class="field-error">Indique ton nom.</span>
       </div>
 
       <div class="form-group" :class="{ invalid: hasSubmitted && !isValidEmail(email) }">
-        <input type="email" id="email" name="email" v-model="email" placeholder=" " autocomplete="email" required :aria-invalid="hasSubmitted && !isValidEmail(email)" @input="clearFeedback" />
+        <input type="email" id="email" name="email" v-model="email" placeholder=" " autocomplete="off" required :aria-invalid="hasSubmitted && !isValidEmail(email)" @input="clearFeedback" />
         <label for="email">Email</label>
         <span v-if="hasSubmitted && !isValidEmail(email)" class="field-error">Entre une adresse email valide.</span>
       </div>
 
+      <div class="form-group" :class="{ invalid: hasSubmitted && !emailsMatch }">
+        <input type="email" id="email-confirmation" v-model="emailConfirmation" placeholder=" " autocomplete="off" required :aria-invalid="hasSubmitted && !emailsMatch" @input="clearFeedback" />
+        <label for="email-confirmation">Confirme ton email</label>
+        <span v-if="hasSubmitted && !emailConfirmation.trim()" class="field-error">Confirme ton adresse email.</span>
+        <span v-else-if="hasSubmitted && !emailsMatch" class="field-error">Les deux adresses email ne correspondent pas.</span>
+      </div>
+
       <div class="form-group message-group" :class="{ invalid: hasSubmitted && !message.trim() }">
-        <textarea id="message" name="message" v-model="message" rows="4" maxlength="1200" placeholder=" " required :aria-invalid="hasSubmitted && !message.trim()" @input="clearFeedback"></textarea>
+        <textarea id="message" name="message" v-model="message" rows="4" maxlength="1200" placeholder=" " autocomplete="off" spellcheck="false" required :aria-invalid="hasSubmitted && !message.trim()" @input="clearFeedback"></textarea>
         <label for="message">Message</label>
         <span class="character-count">{{ message.length }} / 1200</span>
         <span v-if="hasSubmitted && !message.trim()" class="field-error">Ajoute un message avant l’envoi.</span>
@@ -59,10 +66,11 @@
 
 <script setup>
 import emailjs from '@emailjs/browser'
-import { ref, onMounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 
 const name = ref('')
 const email = ref('')
+const emailConfirmation = ref('')
 const message = ref('')
 const hasSubmitted = ref(false)
 const isSending = ref(false)
@@ -71,11 +79,37 @@ const submissionState = ref('')
 
 // Initialisation EmailJS
 onMounted(() => {
-  emailjs.init('W5C97JtRYCjEdl4B7')
+  emailjs.init('p7oWh02FQzXw--xq2')
+})
+
+onUnmounted(() => {
+  name.value = ''
+  email.value = ''
+  emailConfirmation.value = ''
+  message.value = ''
 })
 
 // Fonction d'envoi
-const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+const isValidEmail = (value) => {
+  const normalized = value.trim()
+  const [localPart, domain, ...extraParts] = normalized.split('@')
+
+  if (!localPart || !domain || extraParts.length || normalized.length > 254) return false
+  if (localPart.length > 64 || localPart.startsWith('.') || localPart.endsWith('.') || localPart.includes('..')) return false
+
+  const domainLabels = domain.split('.')
+  const validLabels = domainLabels.length >= 2 && domainLabels.every((label) =>
+    /^[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?$/i.test(label)
+  )
+
+  return validLabels && /^[a-z]{2,63}$/i.test(domainLabels.at(-1))
+}
+
+const emailsMatch = computed(() => {
+  const normalizedEmail = email.value.trim().toLowerCase()
+  const normalizedConfirmation = emailConfirmation.value.trim().toLowerCase()
+  return Boolean(normalizedEmail && normalizedConfirmation && normalizedEmail === normalizedConfirmation)
+})
 
 const clearFeedback = () => {
   submissionMessage.value = ''
@@ -85,7 +119,7 @@ const clearFeedback = () => {
 const sendEmail = () => {
   hasSubmitted.value = true
 
-  if (!name.value.trim() || !isValidEmail(email.value) || !message.value.trim()) {
+  if (!name.value.trim() || !isValidEmail(email.value) || !emailsMatch.value || !message.value.trim()) {
     submissionState.value = 'error'
     submissionMessage.value = 'Vérifie les champs signalés avant d’envoyer.'
     return
@@ -102,13 +136,31 @@ const sendEmail = () => {
       submissionMessage.value = 'Message envoyé. Merci, je te répondrai rapidement.'
       name.value = ''
       email.value = ''
+      emailConfirmation.value = ''
       message.value = ''
+      hasSubmitted.value = false
     })
     .catch((error) => {
       submissionState.value = 'error'
-      submissionMessage.value = error?.status === 412 || error?.text?.includes('Invalid grant')
-        ? 'La connexion Gmail du service d’envoi a expiré. Contacte-moi directement par email pendant que je rétablis le service.'
-        : 'L’envoi a échoué. Réessaie ou contacte-moi directement par email.'
+      const status = Number(error?.status)
+      const details = String(error?.text || '').toLowerCase()
+
+      console.error('Échec EmailJS', { status, details: error?.text })
+
+      if (status === 412 || details.includes('invalid grant')) {
+        submissionMessage.value = 'La connexion Gmail du service EmailJS a expiré. Reconnecte Gmail dans EmailJS, puis réessaie.'
+      } else if (status === 400 || details.includes('template')) {
+        submissionMessage.value = 'EmailJS refuse les paramètres du template. Vérifie les noms de variables : name, email et message.'
+      } else if (status === 401 || status === 403) {
+        submissionMessage.value = 'EmailJS refuse la clé publique ou le domaine. Vérifie la clé publique et les domaines autorisés dans EmailJS.'
+      } else if (status === 429) {
+        submissionMessage.value = 'La limite d’envoi EmailJS est atteinte. Attends un peu avant de réessayer.'
+      } else {
+        const diagnostic = [status || '', error?.text || ''].filter(Boolean).join(' : ')
+        submissionMessage.value = diagnostic
+          ? `L’envoi a échoué (${diagnostic}). Vérifie la configuration EmailJS ou contacte-moi directement par email.`
+          : 'L’envoi a échoué. Vérifie ta connexion ou contacte-moi directement par email.'
+      }
     })
     .finally(() => {
       isSending.value = false
@@ -128,14 +180,14 @@ const sendEmail = () => {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: clamp(32px, 5vw, 68px) clamp(16px, 5vw, 56px);
+  padding: clamp(20px, 3vh, 30px) clamp(16px, 5vw, 56px);
   overflow: visible;
-  gap: clamp(20px, 3vw, 36px);
+  gap: clamp(16px, 2vw, 28px);
 }
 
 .section-contact form {
   background: rgba(13, 17, 16, 0.92);
-  padding: clamp(24px, 4vw, 38px);
+  padding: clamp(20px, 2.5vw, 30px);
   border: 1px solid rgba(194, 208, 202, 0.18);
   border-radius: 8px;
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
@@ -160,7 +212,7 @@ const sendEmail = () => {
   margin: 0;
   color: #fff;
   font-family: 'Roboto Mono', monospace;
-  font-size: 27px;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -175,7 +227,7 @@ const sendEmail = () => {
 }
 
 .form-intro {
-  margin: 10px 0 28px;
+  margin: 8px 0 18px;
   color: #aeb7b3;
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -184,14 +236,14 @@ const sendEmail = () => {
 
 .section-contact .form-group {
   position: relative;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   padding-top: 4px;
 }
 
 .section-contact input,
 .section-contact textarea {
   width: 100%;
-  min-height: 52px;
+  min-height: 46px;
   padding: 16px 13px 10px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid #414a46;
@@ -240,7 +292,7 @@ const sendEmail = () => {
 }
 
 .section-contact textarea {
-  min-height: 150px;
+  min-height: 112px;
   padding-top: 19px;
   line-height: 1.5;
 }
@@ -266,8 +318,8 @@ const sendEmail = () => {
   justify-content: center;
   gap: 10px;
   width: 100%;
-  min-height: 50px;
-  padding: 12px 18px;
+  min-height: 46px;
+  padding: 10px 16px;
   background: #9ebbb3;
   border: 1px solid #9ebbb3;
   border-radius: 5px;
@@ -342,7 +394,7 @@ const sendEmail = () => {
 
 .contact-info {
   background: rgba(13, 17, 16, 0.78);
-  padding: clamp(24px, 4vw, 34px);
+  padding: clamp(18px, 2vw, 26px);
   border: 1px solid rgba(194, 208, 202, 0.14);
   border-radius: 8px;
   width: min(100%, 360px);
@@ -365,7 +417,7 @@ const sendEmail = () => {
   align-items: center;
   gap: 12px;
   min-width: 0;
-  padding: 13px 0;
+  padding: 9px 0;
   border-bottom: 1px solid rgba(194, 208, 202, 0.12);
   color: #b7bfbb;
   font: 13px/1.6 Arial, sans-serif;
@@ -402,7 +454,7 @@ a.contact-detail:hover .detail-arrow {
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  margin: 16px 0 0;
+  margin: 10px 0 0;
   color: #9ea9a3;
   font: 12px/1.6 Arial, sans-serif;
 }

@@ -36,3 +36,18 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Actualités de la veille
+
+La page Veille récupère le flux RSS de Google Actualités via une Cloudflare Worker dédiée. La Worker ne relaie que les trois sujets prévus dans `workers/news-feed/index.js` ; aucune clé d’API d’actualité n’est nécessaire.
+
+1. Installe Wrangler si besoin avec `npm install --save-dev wrangler`.
+2. Connecte-toi à Cloudflare avec `npx wrangler login`.
+3. Déploie le connecteur depuis la racine du projet avec `npx wrangler deploy --config workers/news-feed/wrangler.jsonc`.
+4. Copie l’URL `*.workers.dev` affichée par Wrangler dans `.env.local` :
+
+```env
+VITE_NEWS_FEED_URL=https://david-portfolio-news-feed.<ton-sous-domaine>.workers.dev/
+```
+
+Pour le développement local, redémarre `npm run dev` après avoir créé `.env.local`. Pour GitHub Pages, ajoute la même URL comme variable de dépôt `VITE_NEWS_FEED_URL` dans **Settings > Secrets and variables > Actions > Variables**. La clé `VITE_NEWS_FEED_URL` n’est pas un secret : c’est l’adresse publique de ta Worker.

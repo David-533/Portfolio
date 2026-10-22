@@ -89,9 +89,9 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const topics = [
-  { id: 'autonomous', label: 'Voiture autonome', query: 'voiture autonome OR véhicule autonome' },
+  { id: 'autonomous', label: 'Voiture autonome', query: 'voiture autonome' },
   { id: 'tesla', label: 'Tesla & conduite assistée', query: 'Tesla conduite autonome FSD' },
-  { id: 'technology', label: 'Technologies & réglementation', query: 'voiture autonome lidar réglementation robotaxi' },
+  { id: 'technology', label: 'Technologies & réglementation', query: 'voiture autonome lidar' },
 ]
 
 const activeTopic = ref('autonomous')
@@ -132,12 +132,19 @@ const loadArticles = async () => {
   loading.value = true
   errorMessage.value = ''
 
-  const feedUrl = new URL('https://news.google.com/rss/search')
-  feedUrl.search = new URLSearchParams({ q: topic.query, hl: 'fr', gl: 'FR', ceid: 'FR:fr' }).toString()
-  const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl.toString())}`
+  const feedEndpoint = import.meta.env.VITE_NEWS_FEED_URL
+
+  if (!feedEndpoint) {
+    errorMessage.value = 'Le connecteur du fil d’actualités n’est pas encore configuré.'
+    loading.value = false
+    window.clearTimeout(timeout)
+    return
+  }
 
   try {
-    const response = await fetch(proxyUrl, { signal: controller.signal, cache: 'no-store' })
+    const feedUrl = new URL(feedEndpoint)
+    feedUrl.searchParams.set('topic', topic.id)
+    const response = await fetch(feedUrl, { signal: controller.signal, cache: 'no-store' })
     if (!response.ok) throw new Error(`Réponse réseau ${response.status}`)
 
     const xmlText = await response.text()
@@ -179,8 +186,8 @@ const loadArticles = async () => {
   } catch (error) {
     if (activeRequest === controller) {
       errorMessage.value = timedOut
-        ? 'Le service de lecture RSS ne répond pas actuellement.'
-        : 'Le flux RSS ne peut pas être chargé depuis cette connexion.'
+        ? 'Le connecteur d’actualités a dépassé le délai prévu.'
+        : 'Le connecteur RSS est momentanément indisponible.'
     }
   } finally {
     window.clearTimeout(timeout)

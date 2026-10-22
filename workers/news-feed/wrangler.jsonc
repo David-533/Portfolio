@@ -1,0 +1,6 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "david-portfolio-news-feed",
+  "main": "index.js",
+  "compatibility_date": "2026-10-22"
+}
