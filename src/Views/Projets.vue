@@ -1,186 +1,398 @@
 <template>
-  <div class="section" id="projets">
-    <h2>Projets</h2>
+  <section class="projects-page" aria-labelledby="projects-title">
+    <header class="page-header">
+      <p class="eyebrow">RÉALISATIONS</p>
+      <h1 id="projects-title">Projet</h1>
+      <p class="page-intro">Un projet web réalisé et présenté ici.</p>
+    </header>
 
-    <div class="parcours-container">
-
-      <!-- Carte 1 : Société Unic -->
-      <div class="parcours-carte">
-        <h3>Société Unic</h3>
-
-        <img 
-          src="https://www.ebp.com/wp-content/uploads/2024/03/banniere-blog-cybersecurite-bu-0324.webp" 
-          alt="Projet Société Unic" 
-          class="carte-image"
-        >
-
-        <a 
-          href="https://docs.google.com/document/d/1rIRTp4-hhE1YO84PA9y5QOIGN84jmwA1RisCV7FLyZs/edit?tab=t.0" 
-          target="_blank" 
-          class="date-bulle"
-        >
-          Voir le projet
-        </a>
-      </div>
-
-      <!-- Carte 2 : GSH -->
-      <div class="parcours-carte">
-        <h3>GSH SOCIAL</h3>
-
-        <img 
-          src="https://www.lgsh.fr/wp-content/uploads/2023/05/cropped-new_logo.jpg" 
-          alt="GSH" 
-          class="carte-image"
-        >
-
-        <a
-          href="https://david-533.github.io/gsh-social/"
-          target="_blank"
-          class="date-bulle"
-        >
-          Voir le projet
-        </a>
-      </div>
-
-      <!-- Carte 3 : BurpSuite -->
-      <div class="parcours-carte">
-        <h3>BurpSuite</h3>
-
+    <article class="featured-project" :class="{ expanded: detailsOpen }">
+      <div class="project-visual">
+        <div class="visual-grid" aria-hidden="true"></div>
         <img
-          src="https://netforemost.com/wp-content/uploads/2024/09/1705584317236.webp"
-          alt="Burpsuite"
-          class="carte-image"
+          class="project-logo"
+          src="https://www.lgsh.fr/wp-content/uploads/2023/05/cropped-new_logo.jpg"
+          alt="Logo de GSH Social"
         >
-
-        <a
-          href="https://docs.google.com/document/d/1KG--GrI2fKsoOHa-S8FOoJedPK-2sXIpc5tnXkrHTc8/edit?tab=t.0"
-          target="_blank"
-          class="date-bulle"
-        >
-          Voir le projet
-        </a>
+        <span class="project-index">01 / 01</span>
+        <span class="visual-label">PROJET WEB</span>
       </div>
 
-      <!-- Carte 4 : Identité numérique -->
-      <div class="parcours-carte">
-        <h3>Identité numérique</h3>
+      <div class="project-content">
+        <div class="project-meta">
+          <span class="project-status"><span></span> En ligne</span>
+          <span class="project-category">Site web</span>
+        </div>
 
-        <img
-          src="https://semji.com/wp-content/uploads/2020/07/Protection-identit%C3%A9-num%C3%A9rique.png"
-          alt="Identité numérique"
-          class="carte-image"
-        >
+        <h2>GSH Social</h2>
+        <p class="project-summary">
+          Découvre le site GSH Social et son univers directement dans sa version en ligne.
+        </p>
 
-        <a
-          href="https://docs.google.com/document/d/1hF0lc3QFmj0v5-1YAJWAS9JlC67tcnITHxxkOz7mKWc/edit?tab=t.0"
-          target="_blank"
-          class="date-bulle"
-        >
-          Voir le projet
-        </a>
+        <Transition name="details">
+          <div v-if="detailsOpen" class="project-details">
+            <p>
+              Le projet est consultable sur son site dédié. Ouvre-le pour parcourir son contenu et voir le résultat en situation réelle.
+            </p>
+            <dl>
+              <div>
+                <dt>Type</dt>
+                <dd>Projet web</dd>
+              </div>
+              <div>
+                <dt>Accès</dt>
+                <dd>Site en ligne</dd>
+              </div>
+            </dl>
+          </div>
+        </Transition>
+
+        <div class="project-actions">
+          <a class="visit-link" href="https://david-533.github.io/gsh-social/" target="_blank" rel="noopener noreferrer">
+            Visiter le projet
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+          </a>
+          <button
+            class="details-toggle"
+            type="button"
+            :aria-expanded="detailsOpen"
+            @click="detailsOpen = !detailsOpen"
+          >
+            {{ detailsOpen ? 'Masquer les détails' : 'Voir les détails' }}
+            <svg viewBox="0 0 24 24" :class="{ rotated: detailsOpen }" aria-hidden="true">
+              <path d="m7 10 5 5 5-5" />
+            </svg>
+          </button>
+        </div>
       </div>
-
-    </div>
-  </div>
+    </article>
+  </section>
 </template>
 
+<script setup>
+import { ref } from 'vue'
 
-<script>
-export default {
-  name: "Projets",
-};
+const detailsOpen = ref(false)
 </script>
 
-
 <style scoped>
-.parcours-container {
-  display: flex;
-  flex-direction: column; /* empile les cartes verticalement */
-  align-items: center;    /* centre les cartes horizontalement */
-  justify-content: center;
-  gap: 40px;              /* espace plus large entre les cartes */
-  padding: 60px 0;
-  flex-direction: row;
-  flex-wrap: wrap;
-  font-family: Roboto, sans-serif;
-  margin-left: 220px;
+.projects-page {
+  width: min(100%, 1180px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 64px) clamp(16px, 4vw, 48px) 72px;
+  color: #f4f5f4;
 }
 
-/* ====== Cartes ====== */
-.parcours-carte {
-  width: 400px;           /* largeur augmentée */
-  height: 320px;          /* hauteur augmentée */
-  background-color: #1a1a1a;
-  border-radius: 15px;
-  box-shadow: 0 0 25px #00ffff55;
-  padding: 20px;
+.page-header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #9ebbb3;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.page-intro {
+  margin: 10px 0 0;
+  color: #aeb7b3;
+  font: 14px/1.6 Arial, sans-serif;
+}
+
+.featured-project {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid rgba(194, 208, 202, 0.17);
+  border-radius: 8px;
+  background: rgba(13, 17, 16, 0.88);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+  animation: project-enter 600ms ease both;
+}
+
+.project-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(158, 187, 179, 0.18), transparent 42%),
+    linear-gradient(145deg, #17211d, #0b0f0e 70%);
+}
+
+.visual-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image: linear-gradient(rgba(194, 208, 202, 0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(194, 208, 202, 0.16) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+  transition: transform 500ms ease, opacity 300ms ease;
+}
+
+.featured-project:hover .visual-grid {
+  transform: scale(1.06);
+  opacity: 0.28;
+}
+
+.project-logo {
+  position: relative;
+  z-index: 1;
+  width: min(48%, 220px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.4);
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.featured-project:hover .project-logo {
+  transform: translateY(-5px) rotate(-1deg);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.48);
+}
+
+.project-index,
+.visual-label {
+  position: absolute;
+  z-index: 2;
+  color: rgba(233, 239, 236, 0.76);
+  font: 10px 'Roboto Mono', monospace;
+}
+
+.project-index {
+  top: 20px;
+  left: 22px;
+}
+
+.visual-label {
+  right: 22px;
+  bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.project-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 10px 18px;
+  color: #aeb7b3;
+  font: 11px 'Roboto Mono', monospace;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c7d5ce;
+}
+
+.project-status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9ebbb3;
+  box-shadow: 0 0 8px rgba(158, 187, 179, 0.35);
+}
+
+.project-category {
+  padding-left: 18px;
+  border-left: 1px solid rgba(194, 208, 202, 0.22);
+}
+
+.project-content h2 {
+  margin: 22px 0 0;
+  color: #fff;
+  font: 600 clamp(26px, 4vw, 38px)/1.2 'Roboto Mono', monospace;
+}
+
+.project-summary,
+.project-details p {
+  max-width: 480px;
+  color: #b2b8b5;
+  font: 15px/1.7 Arial, sans-serif;
+}
+
+.project-summary {
+  margin: 16px 0 0;
+}
+
+.project-details {
+  width: 100%;
+  max-width: 480px;
   overflow: hidden;
 }
 
-/* ====== Image ====== */
-.carte-image-container {
-  width: 100%;
-  height: 180px; /* plus grande pour remplir la carte */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 15px #00ffff33;
-  margin-bottom: 15px;
+.project-details p {
+  margin: 14px 0 18px;
+  font-size: 14px;
 }
 
-.carte-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+.project-details dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid rgba(194, 208, 202, 0.15);
+  border-bottom: 1px solid rgba(194, 208, 202, 0.15);
 }
 
-.parcours-carte:hover .carte-image {
-  transform: scale(1.05);
+.project-details dl div {
+  display: grid;
+  gap: 5px;
 }
 
-/* ====== Texte et bouton ====== */
-h3 {
-  color: #ffffff;
-  font-size: 1.4rem; /* texte plus grand */
-  margin-bottom: 15px;
+.project-details dt {
+  color: #87938d;
+  font: 10px 'Roboto Mono', monospace;
+  text-transform: uppercase;
 }
 
-.date-bulle {
-  background: linear-gradient(90deg, #ff00ff, #00ffff);
-  color: white;
-  padding: 10px 22px;
-  border-radius: 25px;
-  font-size: 15px;
+.project-details dd {
+  margin: 0;
+  color: #e2e8e4;
+  font: 13px Arial, sans-serif;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.visit-link,
+.details-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  font: 600 13px Arial, sans-serif;
   text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 0 12px #00ffff55;
-  transition: all 0.3s ease;
-  margin-top: 51px;
-  gap: 60;
+  cursor: pointer;
 }
 
-.date-bulle:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #00ffffaa;
-}
-h2 {
-  text-align: center;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffffaa;
-  margin-bottom: 50px;
-  font-family: 'Segoe UI', sans-serif;
-}
- .section {
-  margin-top: 120px; /* Ajuste comme tu veux */
+.visit-link {
+  padding: 0 16px;
+  border: 1px solid #9ebbb3;
+  border-radius: 5px;
+  background: #9ebbb3;
+  color: #101513;
+  transition: transform 180ms ease, background 180ms ease;
 }
 
+.visit-link:hover {
+  transform: translateY(-2px);
+  background: #b7ccc4;
+}
 
+.visit-link svg,
+.details-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.details-toggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b8c2bd;
+  transition: color 160ms ease;
+}
+
+.details-toggle:hover {
+  color: #fff;
+}
+
+.details-toggle svg {
+  transition: transform 180ms ease;
+}
+
+.details-toggle svg.rotated {
+  transform: rotate(180deg);
+}
+
+.details-enter-active,
+.details-leave-active {
+  transition: opacity 200ms ease, max-height 250ms ease;
+  max-height: 180px;
+}
+
+.details-enter-from,
+.details-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+
+@keyframes project-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .projects-page {
+    padding: 34px 18px 48px;
+  }
+
+  .featured-project {
+    grid-template-columns: 1fr;
+  }
+
+  .project-visual {
+    min-height: 250px;
+  }
+
+  .project-logo {
+    width: 150px;
+  }
+
+  .project-content {
+    padding: 24px 20px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-project {
+    animation: none;
+  }
+
+  .project-logo,
+  .visual-grid,
+  .visit-link,
+  .details-toggle svg {
+    transition: none;
+  }
+}
 </style>
-
-

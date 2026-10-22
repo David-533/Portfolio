@@ -25,12 +25,14 @@ export default {
   top: 0;
   left: 0;
   width: 250px; /* largeur élargie */
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   background-color: #111;
   padding-top: 60px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   font-family: 'Roboto', sans-serif;
+  overflow-y: auto;
 }
 
 .navbar ul {
@@ -57,6 +59,42 @@ export default {
 .router-link-active {
   color: white;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    height: 58px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .navbar ul {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .navbar ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar li {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .navbar a {
+    display: flex;
+    align-items: center;
+    min-height: 58px;
+    padding: 0 14px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
 }
 </style>
 

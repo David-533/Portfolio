@@ -1,15 +1,14 @@
 <template>
-  <title>Portfolio BTS SIO | David RAMIN</title>
   <div class="page_accueil">
     <img
       src="https://i.pinimg.com/originals/22/c8/87/22c887ab8cd375d078f0f2178e400374.gif"
       alt="Animation accueil"
     >
-  </div>
-  <div class="texte-sur-image" :class="{ visible: isVisible }">
-    <h1>DAVID RAMIN</h1>
-    <p>ETUDIANT EN BTS SIO - OPTION SLAM</p>
-    <p>Bienvenue sur mon Portfolio</p>
+    <div class="texte-sur-image" :class="{ visible: isVisible }">
+      <h1>DAVID RAMIN</h1>
+      <p>ETUDIANT EN BACHELOR 3EME ANNEE DEVELOPPEMENT WEB, MOBILE & IA</p>
+      <p>Bienvenue sur mon Portfolio</p>
+    </div>
   </div>
 </template>
 
@@ -30,14 +29,17 @@ export default {
 </script>
 
 <style scoped>
-body {
-  margin: 0;
+.page_accueil {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
 }
 
 .page_accueil img {
   width: 100%;
-  max-height: 100vh;
+  height: 100vh;
+  height: 100svh;
   object-fit: cover;
   display: block;
 }
@@ -46,6 +48,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: min(100% - 32px, 760px);
   transform: translate(-50%, -30%);
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -81,6 +84,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  .page_accueil,
+  .page_accueil img {
+    min-height: calc(100svh - 58px);
+    height: calc(100svh - 58px);
+  }
+
   .texte-sur-image h1 {
     font-size: 40px;
   }
