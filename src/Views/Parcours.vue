@@ -66,9 +66,9 @@ export default {
           id: "school",
           title: "Parcours scolaire",
           entries: [
-            { id: "brevet", date: "2017 - 2021", title: "Brevet", place: "Collège Germaine Tillion, Lardy" },
             { id: "bac", date: "2021 - 2024", title: "Bac STI2D", place: "Lycée Edmond Michelet, Arpajon" },
             { id: "bts", date: "2024 - 2026", title: "BTS SIO, option SLAM", place: "Lycée Saint Hilaire, Étampes" },
+            { id: "bachelor", date: "2026 - 2027", title: "Bachelor 3ème année Développement web, mobile & IA", place: "Ecole Digital Campus Paris" },
           ],
         },
         {
